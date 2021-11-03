@@ -1,3 +1,11 @@
 <template>
-    <h1>測試 Github Actions</h1>
+    <TheHeader />
 </template>
+<script>
+import TheHeader from '@/components/TheHeader.vue'
+export default {
+    components: {
+        TheHeader,
+    },
+}
+</script>
