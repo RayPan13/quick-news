@@ -5,63 +5,25 @@
                 <a href="javascript:;">home</a>
                 <span>Quick</span>News<span>.</span>
             </div>
-            <nav>
-                <ul>
-                    <li v-for="item of menu" :key="item.id">
-                        <a :href="item.url">{{ item.name }}</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;"><fa :icon="['fas', 'search']" /></a>
-                    </li>
-                </ul>
-            </nav>
+            <TheNav />
+            <div class="menu" @click="openNav">
+                <div class="line"></div>
+            </div>
         </div>
     </header>
 </template>
 
 <script>
+import TheNav from '@/components/TheNav.vue'
 export default {
     name: 'TheHeader',
-    data() {
-        return {
-            menu: [
-                {
-                    id: 1,
-                    name: 'FRONT PAGE',
-                    url: 'javascript:;',
-                },
-                {
-                    id: 2,
-                    name: 'PAGE',
-                    url: 'javascript:;',
-                },
-                {
-                    id: 3,
-                    name: 'POST(CATEGORY)',
-                    url: 'javascript:;',
-                },
-                {
-                    id: 4,
-                    name: 'SINGLE(POST)',
-                    url: 'javascript:;',
-                },
-                {
-                    id: 5,
-                    name: 'CONTACT',
-                    url: 'javascript:;',
-                },
-                {
-                    id: 6,
-                    name: '404(ERROR)',
-                    url: 'javascript:;',
-                },
-                {
-                    id: 7,
-                    name: 'SUBMENUS',
-                    url: 'javascript:;',
-                },
-            ],
-        }
+    components: {
+        TheNav,
+    },
+    methods: {
+        openNav() {
+            this.$store.dispatch('updateNav', true)
+        },
     },
 }
 </script>
@@ -94,41 +56,40 @@ header {
         color: map-get($color, main);
     }
 }
-nav {
-    ul {
-        padding: 0;
-        margin: 0;
-        display: flex;
+.menu {
+    display: none;
+    @include media(1200) {
+        display: block;
     }
-    li {
-        position: relative;
-        list-style: none;
-        color: #fff;
-        font-size: 1.4rem;
-        font-weight: 600;
-        margin-right: 24px;
-        &:last-child {
-            margin-right: 0;
-        }
+    width: 24px;
+    height: 24px;
+    position: relative;
+    margin: 32px 0;
+    cursor: pointer;
+    .line {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        width: 100%;
+        height: 4px;
+        background-color: #fff;
+        &::before,
         &::after {
             content: '';
-            display: none;
-            position: absolute;
+            display: block;
             width: 100%;
             height: 4px;
-            background-color: map-get($color, main);
-            bottom: 0;
+            background-color: #fff;
+            position: absolute;
             left: 0;
         }
-        &:hover {
-            &::after {
-                display: inline-block;
-            }
+        &::before {
+            top: 8px;
         }
-    }
-    a {
-        display: block;
-        padding: 32px 0;
+        &::after {
+            top: -8px;
+        }
     }
 }
 </style>
