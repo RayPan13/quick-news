@@ -3,6 +3,11 @@
         <ul>
             <li v-for="item of menu" :key="item.id">
                 <a :href="item.url">{{ item.name }}</a>
+                <ul>
+                    <li v-for="subItem of item.sub" :key="subItem.id">
+                        <a :href="subItem.url">{{ subItem.name }}</a>
+                    </li>
+                </ul>
             </li>
             <li>
                 <a href="javascript:;"><fa :icon="['fas', 'search']" /></a>
@@ -20,36 +25,56 @@ export default {
                     id: 1,
                     name: 'FRONT PAGE',
                     url: 'javascript:;',
+                    sub: false,
                 },
                 {
                     id: 2,
                     name: 'PAGE',
                     url: 'javascript:;',
+                    sub: false,
                 },
                 {
                     id: 3,
                     name: 'POST(CATEGORY)',
                     url: 'javascript:;',
+                    sub: false,
                 },
                 {
                     id: 4,
                     name: 'SINGLE(POST)',
                     url: 'javascript:;',
+                    sub: false,
                 },
                 {
                     id: 5,
                     name: 'CONTACT',
                     url: 'javascript:;',
+                    sub: false,
                 },
                 {
                     id: 6,
                     name: '404(ERROR)',
                     url: 'javascript:;',
+                    sub: false,
                 },
                 {
                     id: 7,
                     name: 'SUBMENUS',
                     url: 'javascript:;',
+                    sub: [
+                        {
+                            id: 71,
+                            name: 'Submenu 1',
+                            url: 'javascript:;',
+                            sub: false,
+                        },
+                        {
+                            id: 72,
+                            name: 'Submenu 2',
+                            url: 'javascript:;',
+                            sub: false,
+                        },
+                    ],
                 },
             ],
         }
@@ -64,7 +89,6 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/scss/variable';
 nav {
-    z-index: 99;
     @include media(1200) {
         position: fixed;
         top: 0;
@@ -73,6 +97,7 @@ nav {
         height: 100vh;
         background-color: map-get($color, main);
         transition: left 0.5s;
+        z-index: 99;
     }
     &.open {
         left: 0;
@@ -106,12 +131,39 @@ nav {
             width: 100%;
             height: 4px;
             background-color: map-get($color, main);
-            bottom: 0;
+            bottom: -2px;
             left: 0;
         }
         &:hover {
             &::after {
                 display: inline-block;
+            }
+            ul {
+                opacity: 1;
+                z-index: 0;
+            }
+        }
+        ul {
+            width: 300%;
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, -2px);
+            background-color: map-get($color, main);
+            padding: 0 24px;
+            opacity: 0;
+            z-index: -9;
+            transition: opacity 0.5s;
+            @include media(1200) {
+                position: relative;
+                opacity: 1;
+                width: auto;
+                z-index: 0;
+            }
+
+            li:hover {
+                &::after {
+                    display: none;
+                }
             }
         }
     }
@@ -119,7 +171,7 @@ nav {
         display: block;
         padding: 32px 0;
         @include media(1200) {
-            padding: 24px 0;
+            padding: 16px 0;
         }
     }
 }
