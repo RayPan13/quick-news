@@ -1,4 +1,4 @@
-# ouick-news
+# quick-news
 
 ## Build Setup
 
