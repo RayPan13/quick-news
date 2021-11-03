@@ -29,7 +29,7 @@ export default {
     css: ['@/assets/css/normalize.css', '@/assets/scss/basic.scss'],
 
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-    plugins: [],
+    plugins: ['@/plugins/font-awesome'],
 
     // Auto import components: https://go.nuxtjs.dev/config-components
     components: true,
@@ -41,7 +41,24 @@ export default {
     ],
 
     // Modules: https://go.nuxtjs.dev/config-modules
-    modules: [],
+    modules: ['nuxt-fontawesome'],
+    fontawesome: {
+        component: 'fa',
+        imports: [
+            {
+                set: '@fortawesome/free-solid-svg-icons',
+                icons: ['fas'],
+            },
+            // {
+            //     set: '@fortawesome/free-regular-svg-icons',
+            //     icons: ['far'],
+            // },
+            // {
+            //     set: '@fortawesome/free-brands-svg-icons',
+            //     icons: ['fab'],
+            // },
+        ],
+    },
     ...routerBase,
     // Build Configuration: https://go.nuxtjs.dev/config-build
     build: {},
