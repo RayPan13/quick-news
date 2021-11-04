@@ -1,41 +1,54 @@
 <template>
     <div class="kv">
         <div class="carousel">
-            <div class="item">
-                <div class="container">
-                    <div class="context">
-                        <div class="type">LIFESTYLE</div>
-                        <h2>Oceans May Reduce Sea Life</h2>
-                        <div class="info">
-                            <div class="author">
-                                <span class="icon">
-                                    <fa :icon="['far', 'user']" />
-                                </span>
-                                <span>John Adams</span>
-                            </div>
-                            <div class="comment">
-                                <span class="icon">
-                                    <fa :icon="['far', 'comment']" />
-                                </span>
-                                <span class="count">2</span>
-                                <span>comments</span>
+            <transition-group tag="div" class="box" name="fade">
+                <div
+                    v-for="(obj, index) of carousel"
+                    v-show="index === showIndex"
+                    :key="obj.id"
+                    :style="{ background: 'url(' + obj.bg + ')' }"
+                    class="item"
+                >
+                    <div class="container">
+                        <div class="context">
+                            <div class="type">{{ obj.type }}</div>
+                            <h2>{{ obj.title }}</h2>
+                            <div class="info">
+                                <div class="author">
+                                    <span class="icon">
+                                        <fa :icon="['far', 'user']" />
+                                    </span>
+                                    <span>{{ obj.author }}</span>
+                                </div>
+                                <div class="comment">
+                                    <span class="icon">
+                                        <fa :icon="['far', 'comment']" />
+                                    </span>
+                                    <span class="count">{{ obj.comments }}</span>
+                                    <span>comments</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="date">
-                        <span class="icon">
-                            <fa :icon="['far', 'calendar']" />
-                        </span>
-                        <span class="month">July</span>
-                        <span class="day">27</span>
+                        <div class="date">
+                            <span class="icon">
+                                <fa :icon="['far', 'calendar']" />
+                            </span>
+                            <span class="month">{{ monthFormat(obj.date) }}</span>
+                            <span class="day">{{ dayFormat(obj.date) }}</span>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </transition-group>
+
             <div class="dots">
                 <div class="container">
                     <ul>
-                        <li class="active"></li>
-                        <li></li>
+                        <li
+                            v-for="(num, index) of carousel.length"
+                            :key="num"
+                            :class="{ active: index === showIndex }"
+                            @click="setShow(index)"
+                        ></li>
                     </ul>
                 </div>
             </div>
@@ -43,8 +56,67 @@
     </div>
 </template>
 <script>
+const interval = 5000
+
 export default {
     name: 'TheKv',
+    data() {
+        return {
+            carousel: [
+                {
+                    id: 1,
+                    type: 'LIFESTYLE',
+                    title: 'Oceans May Reduce Sea Life',
+                    author: 'John Adams',
+                    comments: 10,
+                    date: '11/04',
+                    bg: 'https://picsum.photos/1920/1080.webp?random=1001',
+                },
+                {
+                    id: 2,
+                    type: 'TRAVEL',
+                    title: 'Warning Oceans May Reduce Sea Life by 17%',
+                    author: 'John Adams',
+                    comments: 2,
+                    date: '10/31',
+                    bg: 'https://picsum.photos/1920/1080.webp?random=1002',
+                },
+            ],
+            showIndex: 0,
+        }
+    },
+    mounted() {
+        setInterval(() => {
+            this.setShow(this.showIndex + 1)
+        }, interval)
+    },
+    methods: {
+        monthFormat(date) {
+            const monthMapping = [
+                'Jan.',
+                'Feb.',
+                'Mar.',
+                'Apr.',
+                'May',
+                'Jun.',
+                'Jul.',
+                'Aug.',
+                'Sep.',
+                'Oct.',
+                'Nov.',
+                'Dec',
+            ]
+            const month = date.split('/')[0]
+            return monthMapping[month - 1]
+        },
+        dayFormat(date) {
+            return date.split('/')[1]
+        },
+        setShow(index) {
+            const max = this.carousel.length - 1
+            index > max ? (this.showIndex = 0) : (this.showIndex = index)
+        },
+    },
 }
 </script>
 <style lang="scss" scoped>
@@ -55,13 +127,21 @@ export default {
 .carousel {
     position: relative;
     width: 100%;
+    background-color: #000;
+    .box {
+        height: 600px;
+        @include media(990) {
+            height: 500px;
+        }
+    }
     .item {
-        background-image: url('https://picsum.photos/1920/1080.webp?random=1001');
         background-size: cover;
         background-position: center;
         width: 100%;
         height: 600px;
-        position: relative;
+        position: absolute;
+        top: 0;
+        left: 0;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -167,9 +247,28 @@ export default {
         background-color: rgba(255, 255, 255, 0.4);
         border-radius: 50%;
         margin-bottom: 8px;
+        cursor: pointer;
         &.active {
             background-color: rgba(255, 255, 255, 1);
         }
     }
+}
+.fade-enter {
+    opacity: 0;
+}
+.fade-enter-active {
+    transition: opacity 1.5s;
+}
+.fade-enter-to {
+    opacity: 1;
+}
+.fade-leave {
+    opacity: 1;
+}
+.fade-leave-active {
+    transition: opacity 1.5s;
+}
+.fade-leave-to {
+    opacity: 0;
 }
 </style>
