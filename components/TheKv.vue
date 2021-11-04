@@ -53,12 +53,14 @@
                 </div>
             </div>
         </div>
-        <div class="breaking">
-            <p>
-                <span class="bold">Breaking news!</span> 9 Ways to Generate More Revenue For Your Business Read this to
-                bring you more revenue more happiness!
-            </p>
-            <fa :icon="['fas', 'angle-right']" />
+        <div class="container">
+            <div class="breaking">
+                <p>
+                    <span class="bold">Breaking news!</span> 9 Ways to Generate More Revenue For Your Business Read this
+                    to bring you more revenue more happiness!
+                </p>
+                <fa :icon="['fas', 'angle-right']" />
+            </div>
         </div>
     </div>
 </template>
@@ -131,6 +133,9 @@ export default {
 .kv {
     width: 100%;
     position: relative;
+    > .container {
+        transform: translateY(-50%);
+    }
 }
 .carousel {
     position: relative;
@@ -262,21 +267,13 @@ export default {
     }
 }
 .breaking {
-    width: 80%;
     padding: 24px 12px;
     color: #fff;
     background-color: map-get($color, main);
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    transform: translate(-50%, 50%);
     display: flex;
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
-    @include media(580) {
-        width: 100%;
-    }
     &:hover {
         background-color: #000;
     }
