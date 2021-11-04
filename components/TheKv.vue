@@ -56,7 +56,7 @@
     </div>
 </template>
 <script>
-const interval = 5000
+const interval = 8000
 
 export default {
     name: 'TheKv',

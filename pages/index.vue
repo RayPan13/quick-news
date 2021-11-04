@@ -1,7 +1,7 @@
 <template>
     <div id="index">
         <the-cover />
-        <the-header />
+        <the-header :scroll-top="scrollTop" />
         <the-kv />
     </div>
 </template>
@@ -14,6 +14,22 @@ export default {
         TheCover,
         TheHeader,
         TheKv,
+    },
+    data() {
+        return {
+            scrollTop: 0,
+        }
+    },
+    mounted() {
+        window.addEventListener('scroll', this.scrollhandler)
+    },
+    destroyed() {
+        window.removeEventListener('scroll', this.scrollhandler)
+    },
+    methods: {
+        scrollhandler() {
+            this.scrollTop = document.documentElement.scrollTop
+        },
     },
 }
 </script>

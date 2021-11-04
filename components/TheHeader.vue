@@ -1,5 +1,5 @@
 <template>
-    <header>
+    <header :class="{ black: scrollTop > position }">
         <div class="container">
             <div class="logo">
                 <a href="javascript:;">home</a>
@@ -20,6 +20,17 @@ export default {
     components: {
         TheNav,
     },
+    props: {
+        scrollTop: {
+            type: Number,
+            default: 0,
+        },
+    },
+    data() {
+        return {
+            position: 100,
+        }
+    },
     methods: {
         openNav() {
             this.$store.dispatch('updateNav', true)
@@ -32,7 +43,16 @@ export default {
 @import '@/assets/scss/variable';
 header {
     width: 100%;
-    background-color: #000;
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    transition: background 0.5s;
+    &.black {
+        background-color: #000;
+    }
     .container {
         display: flex;
         justify-content: space-between;
