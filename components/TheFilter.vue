@@ -4,20 +4,20 @@
             <h2><span>FILTER NEWS</span></h2>
             <div class="box">
                 <div class="tags">
-                    <div class="tag">
-                        <span>LIFESTYLE</span>
-                        <span class="icon">
-                            <fa :icon="['fas', 'times']" />
-                        </span>
-                    </div>
-                    <div class="tag">
-                        <span>SPORT</span>
-                        <span class="icon">
+                    <div v-for="obj of tags" :key="obj.id" class="tag">
+                        <span>{{ obj.name }}</span>
+                        <span class="icon" @click="removeTag(obj.id)">
                             <fa :icon="['fas', 'times']" />
                         </span>
                     </div>
                     <div class="input-box">
-                        <input type="text" name="filterTag" />
+                        <input
+                            type="text"
+                            placeholder="Filter..."
+                            name="filterTag"
+                            @focus="inputFocus"
+                            @blur="inputBlur"
+                        />
                     </div>
                 </div>
                 <button type="button">
@@ -26,6 +26,18 @@
                     </span>
                     <span>SEARCH</span>
                 </button>
+                <div class="options" :class="{ active: showOption }">
+                    <ul>
+                        <li
+                            v-for="(obj, index) of options"
+                            :key="obj.id"
+                            :class="{ selected: obj.selected }"
+                            @click="selectedToggle(index)"
+                        >
+                            {{ obj.name }}
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -34,6 +46,42 @@
 <script>
 export default {
     name: 'TheFilter',
+    data() {
+        return {
+            options: [
+                { id: 1, name: 'Sport', selected: false },
+                { id: 2, name: 'Travel', selected: false },
+                { id: 3, name: 'Lifestyle', selected: false },
+            ],
+            showOption: false,
+        }
+    },
+    computed: {
+        tags() {
+            return this.options.filter((obj) => obj.selected)
+        },
+    },
+    methods: {
+        inputFocus() {
+            this.showOption = true
+        },
+        inputBlur() {
+            setTimeout(() => {
+                this.showOption = false
+            }, 200)
+        },
+        selectedToggle(index) {
+            const target = this.options[index]
+            target.selected = !target.selected
+        },
+        removeTag(id) {
+            this.options.forEach((obj, index) => {
+                if (obj.id === id) {
+                    this.options[index].selected = false
+                }
+            })
+        },
+    },
 }
 </script>
 <style lang="scss" scoped>
@@ -69,6 +117,7 @@ export default {
         border: 1px solid #ddd;
         display: flex;
         padding: 4px;
+        position: relative;
         .tags {
             display: flex;
             flex-basis: 100%;
@@ -131,6 +180,37 @@ export default {
             }
             .icon {
                 margin-right: 4px;
+            }
+        }
+    }
+    .options {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #f5f5f5;
+        display: none;
+        &.active {
+            display: block;
+        }
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            list-style: none;
+            padding: 12px 8px;
+            font-size: 1.4rem;
+            color: #000;
+            cursor: pointer;
+            &:hover {
+                background-color: map-get($color, main);
+            }
+            &.selected {
+                color: #777;
+                &:hover {
+                    background-color: #fff;
+                }
             }
         }
     }
