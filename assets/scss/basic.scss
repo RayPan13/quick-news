@@ -32,7 +32,4 @@ a {
     @include media(768) {
         max-width: 540px;
     }
-    @include media(768) {
-        max-width: auto;
-    }
 }
