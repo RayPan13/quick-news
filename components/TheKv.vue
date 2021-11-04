@@ -53,6 +53,13 @@
                 </div>
             </div>
         </div>
+        <div class="breaking">
+            <p>
+                <span class="bold">Breaking news!</span> 9 Ways to Generate More Revenue For Your Business Read this to
+                bring you more revenue more happiness!
+            </p>
+            <fa :icon="['fas', 'angle-right']" />
+        </div>
     </div>
 </template>
 <script>
@@ -123,6 +130,7 @@ export default {
 @import '@/assets/scss/variable';
 .kv {
     width: 100%;
+    position: relative;
 }
 .carousel {
     position: relative;
@@ -251,6 +259,39 @@ export default {
         &.active {
             background-color: rgba(255, 255, 255, 1);
         }
+    }
+}
+.breaking {
+    width: 80%;
+    padding: 24px 12px;
+    color: #fff;
+    background-color: map-get($color, main);
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, 50%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    @include media(580) {
+        width: 100%;
+    }
+    &:hover {
+        background-color: #000;
+    }
+    p {
+        font-size: 1.4rem;
+        font-weight: 300;
+        line-height: 1.5;
+        margin: 0;
+        padding-right: 12px;
+        .bold {
+            font-weight: bold;
+        }
+    }
+    svg {
+        font-size: 2rem;
     }
 }
 .fade-enter {
