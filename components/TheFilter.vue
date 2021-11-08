@@ -4,19 +4,21 @@
             <h2><span>FILTER NEWS</span></h2>
             <div class="box">
                 <div class="tags">
-                    <div v-for="obj of tags" :key="obj.id" class="tag">
+                    <div v-for="obj of tags" :key="obj.name" class="tag">
                         <span>{{ obj.name }}</span>
-                        <span class="icon" @click="removeTag(obj.id)">
+                        <span class="icon" @click="removeTag(obj.name)">
                             <fa :icon="['fas', 'times']" />
                         </span>
                     </div>
                     <div class="input-box">
                         <input
+                            v-model="inputTag"
                             type="text"
                             placeholder="Filter..."
                             name="filterTag"
                             @focus="inputFocus"
                             @blur="inputBlur"
+                            @keyup.enter="setInputTag"
                         />
                     </div>
                 </div>
@@ -29,10 +31,10 @@
                 <div class="options" :class="{ active: showOption }">
                     <ul>
                         <li
-                            v-for="(obj, index) of options"
-                            :key="obj.id"
+                            v-for="obj of options"
+                            :key="obj.name"
                             :class="{ selected: obj.selected }"
-                            @click="selectedToggle(index)"
+                            @click="selectedToggle(obj.name)"
                         >
                             {{ obj.name }}
                         </li>
@@ -49,10 +51,11 @@ export default {
     data() {
         return {
             options: [
-                { id: 1, name: 'Sport', selected: false },
-                { id: 2, name: 'Travel', selected: false },
-                { id: 3, name: 'Lifestyle', selected: false },
+                { name: 'Sport', selected: false },
+                { name: 'Travel', selected: false },
+                { name: 'Lifestyle', selected: false },
             ],
+            inputTag: '',
             showOption: false,
         }
     },
@@ -70,14 +73,22 @@ export default {
                 this.showOption = false
             }, 200)
         },
-        selectedToggle(index) {
-            const target = this.options[index]
-            target.selected = !target.selected
+        setInputTag() {
+            const obj = { name: this.inputTag, selected: true }
+            this.options.push(obj)
+            this.inputTag = ''
         },
-        removeTag(id) {
-            this.options.forEach((obj, index) => {
-                if (obj.id === id) {
-                    this.options[index].selected = false
+        selectedToggle(name) {
+            this.options.forEach((obj) => {
+                if (obj.name === name) {
+                    obj.selected = !obj.selected
+                }
+            })
+        },
+        removeTag(name) {
+            this.options.forEach((obj) => {
+                if (obj.name === name) {
+                    obj.selected = false
                 }
             })
         },
@@ -183,7 +194,8 @@ export default {
             }
         }
     }
-    .options {
+    .options,
+    .inputOptions {
         position: absolute;
         top: 100%;
         left: 0;
