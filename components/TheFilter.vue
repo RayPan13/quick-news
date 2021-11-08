@@ -98,6 +98,8 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/scss/variable';
 .filter {
+    width: 100%;
+    margin-bottom: 32px;
     h2 {
         font-size: 2.2rem;
         font-weight: 700;
