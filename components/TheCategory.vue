@@ -1,18 +1,29 @@
 <template>
     <div class="category">
         <div class="container">
-            <h2>Sport News</h2>
+            <h2>{{ postData.title }}</h2>
             <div class="left">
-                <div class="item big">
+                <div
+                    v-for="obj of leftAty"
+                    :key="obj.title"
+                    class="item"
+                    :class="{ video: obj.isVideo, big: obj.isBig }"
+                >
                     <div class="pic">
-                        <a href="javascript:;"></a>
-                        <div class="tag">SPORT</div>
-                        <img src="https://picsum.photos/1050/330.webp?random=201" alt="" />
+                        <a :href="obj.url"></a>
+                        <img :src="obj.src[obj.img]" alt="" />
+                        <div class="tag">{{ postData.tag }}</div>
+                        <div v-if="obj.isVideo" class="play-btn">
+                            <span class="icon">
+                                <fa :icon="['fas', 'play']" />
+                            </span>
+                            <span>PLAY</span>
+                        </div>
                     </div>
                     <div class="txt">
-                        <h3>
-                            <a href="javsscript:;">
-                                25 Top Tourist Attractions in the United Kingdom, in summer 2019 Year
+                        <h3 v-if="!obj.isVideo">
+                            <a :href="obj.url">
+                                {{ obj.title }}
                             </a>
                         </h3>
                         <div class="info">
@@ -20,98 +31,55 @@
                                 <span class="icon">
                                     <fa :icon="['far', 'calendar']" />
                                 </span>
-                                <span>3 min ago</span>
+                                <span>{{ obj.time }}</span>
                             </div>
-                            <div class="author">
+                            <div v-if="obj.isBig" class="author">
                                 <span class="icon">
                                     <fa :icon="['far', 'user']" />
                                 </span>
-                                <span>John Adams</span>
+                                <span>{{ obj.author }}</span>
                             </div>
-                            <div class="views">
+                            <div v-if="obj.isBig" class="views">
                                 <span class="icon">
                                     <fa :icon="['far', 'eye']" />
                                 </span>
-                                <span>932 views</span>
+                                <span>{{ obj.views }} views</span>
                             </div>
-                            <div class="comments">
+                            <div v-if="obj.isBig" class="comments">
                                 <span class="icon">
                                     <fa :icon="['far', 'comment']" />
                                 </span>
-                                <span>2 comments</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="pic">
-                        <a href="javascript:;"></a>
-                        <div class="tag">SPORT</div>
-                        <img src="https://picsum.photos/500/333.webp?random=202" alt="" />
-                    </div>
-                    <div class="txt">
-                        <h3>
-                            <a href="javsscript:;"> 10 Interior Tips In How to Choose a Perfect Frame </a>
-                        </h3>
-                        <div class="info">
-                            <div class="date">
-                                <span class="icon">
-                                    <fa :icon="['far', 'calendar']" />
-                                </span>
-                                <span>3 min ago</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item video">
-                    <div class="pic">
-                        <a href="javascript:;"></a>
-                        <div class="tag">SPORT</div>
-                        <div class="play-btn">
-                            <span class="icon">
-                                <fa :icon="['fas', 'play']" />
-                            </span>
-                            <span>PLAY</span>
-                        </div>
-                        <img src="https://picsum.photos/430/430.webp?random=203" alt="" />
-                    </div>
-                    <div class="txt">
-                        <div class="info">
-                            <div class="date">
-                                <span class="icon">
-                                    <fa :icon="['far', 'calendar']" />
-                                </span>
-                                <span>3 min ago</span>
+                                <span>{{ obj.comments }} comments</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="right">
-                <div class="item">
+                <div v-for="obj of rightAty" :key="obj.title" class="item">
                     <div class="pic">
-                        <a href="javascript:;"></a>
-                        <div class="tag">SPORT</div>
-                        <img src="https://picsum.photos/368/640.webp?random=204" alt="" />
+                        <a :href="obj.url"></a>
+                        <div class="tag">{{ postData.tag }}</div>
+                        <img :src="obj.src[obj.img]" alt="" />
                     </div>
                     <div class="txt">
                         <h3>
-                            <a href="javsscript:;">Manchester United hopeful David de Gea will sign new contract</a>
+                            <a :href="obj.url">{{ obj.title }}</a>
                         </h3>
                         <div class="info">
                             <div class="date">
                                 <span class="icon">
                                     <fa :icon="['far', 'calendar']" />
                                 </span>
-                                <span>3 min ago</span>
+                                <span>{{ obj.time }}</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="more">
-                <a href="javascript:;">
-                    <span>ALL SPORT NEWS</span>
+                <a :href="postData.url">
+                    <span>{{ moreText }}</span>
                     <span class="icon">
                         <fa :icon="['fas', 'angle-right']" />
                     </span>
@@ -123,6 +91,101 @@
 <script>
 export default {
     name: 'TheCategory',
+    data() {
+        return {
+            postData: {
+                title: 'Sport News',
+                url: 'javascript:;',
+                tag: 'SPORT',
+                top: [
+                    {
+                        isBig: true,
+                        isVideo: false,
+                        isTall: false,
+                        img: 'big',
+                        src: {
+                            big: 'https://picsum.photos/1050/330.webp?random=201',
+                            basic: 'https://picsum.photos/500/333.webp?random=201',
+                            video: 'https://picsum.photos/430/430.webp?random=201',
+                            tall: 'https://picsum.photos/368/640.webp?random=201',
+                        },
+                        url: 'javascsript:;',
+                        title: '25 Top Tourist Attractions in the United Kingdom, in summer 2019 Year',
+                        time: '2021/11/07',
+                        author: 'Ray Pan',
+                        views: '999',
+                        comments: '5',
+                    },
+                    {
+                        isBig: false,
+                        isVideo: false,
+                        isTall: false,
+                        img: 'basic',
+                        src: {
+                            big: 'https://picsum.photos/1050/330.webp?random=202',
+                            basic: 'https://picsum.photos/500/333.webp?random=202',
+                            video: 'https://picsum.photos/430/430.webp?random=202',
+                            tall: 'https://picsum.photos/368/640.webp?random=202',
+                        },
+                        url: 'javascsript:;',
+                        title: '10 Interior Tips In How to Choose a Perfect Frame',
+                        time: '2021/11/01',
+                        author: 'Ray Pan',
+                        views: '100',
+                        comments: '15',
+                    },
+                    {
+                        isBig: false,
+                        isVideo: true,
+                        isTall: false,
+                        img: 'video',
+                        src: {
+                            big: 'https://picsum.photos/1050/330.webp?random=203',
+                            basic: 'https://picsum.photos/500/333.webp?random=203',
+                            video: 'https://picsum.photos/430/430.webp?random=203',
+                            tall: 'https://picsum.photos/368/640.webp?random=203',
+                        },
+                        url: 'javascsript:;',
+                        title: 'This is video title',
+                        time: '2021/11/02',
+                        author: 'Ray Pan',
+                        views: '253',
+                        comments: '2',
+                    },
+                    {
+                        isBig: false,
+                        isVideo: false,
+                        isTall: true,
+                        img: 'tall',
+                        src: {
+                            big: 'https://picsum.photos/1050/330.webp?random=204',
+                            basic: 'https://picsum.photos/500/333.webp?random=204',
+                            video: 'https://picsum.photos/430/430.webp?random=204',
+                            tall: 'https://picsum.photos/368/640.webp?random=204',
+                        },
+                        url: 'javascsript:;',
+                        title: 'Manchester United hopeful David de Gea will sign new contract',
+                        time: '2021/11/04',
+                        author: 'Ray Pan',
+                        views: '333',
+                        comments: '3',
+                    },
+                ],
+            },
+        }
+    },
+    computed: {
+        leftAty() {
+            return this.postData.top.filter((obj) => !obj.isTall)
+        },
+        rightAty() {
+            return this.postData.top.filter((obj) => obj.isTall)
+        },
+        moreText() {
+            const title = this.postData.title.toUpperCase()
+            return `ALL ${title}`
+        },
+    },
 }
 </script>
 
