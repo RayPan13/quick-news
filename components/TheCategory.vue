@@ -10,11 +10,7 @@
                     :class="{ video: obj.isVideo, big: obj.isBig }"
                 >
                     <div class="pic">
-<<<<<<< HEAD
                         <a :href="obj.url"></a>
-=======
-                        <a href="javascript:;"></a>
->>>>>>> 567ec4e95689e50d11fff78590a32460463fdf92
                         <img :src="obj.src[obj.img]" alt="" />
                         <div class="tag">{{ postData.tag }}</div>
                         <div v-if="obj.isVideo" class="play-btn">
@@ -26,11 +22,7 @@
                     </div>
                     <div class="txt">
                         <h3 v-if="!obj.isVideo">
-<<<<<<< HEAD
                             <a :href="obj.url">
-=======
-                            <a href="javsscript:;">
->>>>>>> 567ec4e95689e50d11fff78590a32460463fdf92
                                 {{ obj.title }}
                             </a>
                         </h3>
@@ -66,21 +58,13 @@
             <div class="right">
                 <div v-for="obj of rightAty" :key="obj.title" class="item">
                     <div class="pic">
-<<<<<<< HEAD
                         <a :href="obj.url"></a>
-=======
-                        <a href="javascript:;"></a>
->>>>>>> 567ec4e95689e50d11fff78590a32460463fdf92
                         <div class="tag">{{ postData.tag }}</div>
                         <img :src="obj.src[obj.img]" alt="" />
                     </div>
                     <div class="txt">
                         <h3>
-<<<<<<< HEAD
                             <a :href="obj.url">{{ obj.title }}</a>
-=======
-                            <a href="javsscript:;">{{ obj.title }}</a>
->>>>>>> 567ec4e95689e50d11fff78590a32460463fdf92
                         </h3>
                         <div class="info">
                             <div class="date">
@@ -111,14 +95,9 @@ export default {
         return {
             postData: {
                 title: 'Sport News',
-<<<<<<< HEAD
                 url: 'javascript:;',
                 tag: 'SPORT',
                 top: [
-=======
-                tag: 'SPORT',
-                post: [
->>>>>>> 567ec4e95689e50d11fff78590a32460463fdf92
                     {
                         isBig: true,
                         isVideo: false,
@@ -130,10 +109,7 @@ export default {
                             video: 'https://picsum.photos/430/430.webp?random=201',
                             tall: 'https://picsum.photos/368/640.webp?random=201',
                         },
-<<<<<<< HEAD
                         url: 'javascsript:;',
-=======
->>>>>>> 567ec4e95689e50d11fff78590a32460463fdf92
                         title: '25 Top Tourist Attractions in the United Kingdom, in summer 2019 Year',
                         time: '2021/11/07',
                         author: 'Ray Pan',
@@ -151,10 +127,7 @@ export default {
                             video: 'https://picsum.photos/430/430.webp?random=202',
                             tall: 'https://picsum.photos/368/640.webp?random=202',
                         },
-<<<<<<< HEAD
                         url: 'javascsript:;',
-=======
->>>>>>> 567ec4e95689e50d11fff78590a32460463fdf92
                         title: '10 Interior Tips In How to Choose a Perfect Frame',
                         time: '2021/11/01',
                         author: 'Ray Pan',
@@ -172,10 +145,7 @@ export default {
                             video: 'https://picsum.photos/430/430.webp?random=203',
                             tall: 'https://picsum.photos/368/640.webp?random=203',
                         },
-<<<<<<< HEAD
                         url: 'javascsript:;',
-=======
->>>>>>> 567ec4e95689e50d11fff78590a32460463fdf92
                         title: 'This is video title',
                         time: '2021/11/02',
                         author: 'Ray Pan',
@@ -193,10 +163,7 @@ export default {
                             video: 'https://picsum.photos/430/430.webp?random=204',
                             tall: 'https://picsum.photos/368/640.webp?random=204',
                         },
-<<<<<<< HEAD
                         url: 'javascsript:;',
-=======
->>>>>>> 567ec4e95689e50d11fff78590a32460463fdf92
                         title: 'Manchester United hopeful David de Gea will sign new contract',
                         time: '2021/11/04',
                         author: 'Ray Pan',
@@ -209,7 +176,6 @@ export default {
     },
     computed: {
         leftAty() {
-<<<<<<< HEAD
             return this.postData.top.filter((obj) => !obj.isTall)
         },
         rightAty() {
@@ -218,12 +184,6 @@ export default {
         moreText() {
             const title = this.postData.title.toUpperCase()
             return `ALL ${title}`
-=======
-            return this.postData.post.filter((obj) => !obj.isTall)
-        },
-        rightAty() {
-            return this.postData.post.filter((obj) => obj.isTall)
->>>>>>> 567ec4e95689e50d11fff78590a32460463fdf92
         },
     },
 }
