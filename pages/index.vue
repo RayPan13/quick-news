@@ -5,6 +5,7 @@
         <main>
             <the-kv />
             <the-filter />
+            <the-category />
         </main>
     </div>
 </template>
@@ -13,12 +14,14 @@ import TheCover from '@/components/TheCover.vue'
 import TheHeader from '@/components/TheHeader.vue'
 import TheKv from '@/components/TheKv.vue'
 import TheFilter from '@/components/TheFilter.vue'
+import TheCategory from '@/components/TheCategory.vue'
 export default {
     components: {
         TheCover,
         TheHeader,
         TheKv,
         TheFilter,
+        TheCategory,
     },
     data() {
         return {
