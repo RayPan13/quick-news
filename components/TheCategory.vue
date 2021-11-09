@@ -253,12 +253,13 @@ export default {
                 z-index: 3;
                 &:hover ~ img {
                     transform: scale(1.2);
+                    filter: grayscale(1);
                 }
             }
             img {
                 transform: scale(1);
                 transform-origin: center;
-                transition-duration: 0.5s;
+                transition-duration: 1s;
                 width: 100%;
             }
             .tag {
