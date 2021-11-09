@@ -126,6 +126,7 @@ export default {
         font-weight: 700;
         margin: 0 0 24px;
         flex-basis: 100%;
+        line-height: 1.5;
     }
     .left {
         flex-basis: 70%;
