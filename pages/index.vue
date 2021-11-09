@@ -5,7 +5,7 @@
         <main>
             <the-kv />
             <the-filter />
-            <the-category />
+            <the-category :post-data="sport" />
         </main>
     </div>
 </template>
@@ -26,10 +26,12 @@ export default {
     data() {
         return {
             scrollTop: 0,
+            sport: {},
         }
     },
     mounted() {
         window.addEventListener('scroll', this.scrollhandler)
+        this.fetchSportPost()
     },
     destroyed() {
         window.removeEventListener('scroll', this.scrollhandler)
@@ -37,6 +39,9 @@ export default {
     methods: {
         scrollhandler() {
             this.scrollTop = document.documentElement.scrollTop
+        },
+        async fetchSportPost() {
+            this.sport = await this.$axios.$get('http://localhost:3000/sport.json')
         },
     },
 }

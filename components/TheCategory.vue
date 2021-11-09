@@ -92,99 +92,21 @@
 <script>
 export default {
     name: 'TheCategory',
-    data() {
-        return {
-            postData: {
-                title: 'Sport News',
-                url: 'javascript:;',
-                tag: 'SPORT',
-                top: [
-                    {
-                        isBig: true,
-                        isVideo: false,
-                        isTall: false,
-                        img: 'big',
-                        src: {
-                            big: 'https://picsum.photos/1050/330.webp?random=201',
-                            basic: 'https://picsum.photos/500/333.webp?random=201',
-                            video: 'https://picsum.photos/430/430.webp?random=201',
-                            tall: 'https://picsum.photos/368/640.webp?random=201',
-                        },
-                        url: 'javascsript:;',
-                        title: '25 Top Tourist Attractions in the United Kingdom, in summer 2019 Year',
-                        time: '2021/11/07',
-                        author: 'Ray Pan',
-                        views: '999',
-                        comments: '5',
-                    },
-                    {
-                        isBig: false,
-                        isVideo: false,
-                        isTall: false,
-                        img: 'basic',
-                        src: {
-                            big: 'https://picsum.photos/1050/330.webp?random=202',
-                            basic: 'https://picsum.photos/500/333.webp?random=202',
-                            video: 'https://picsum.photos/430/430.webp?random=202',
-                            tall: 'https://picsum.photos/368/640.webp?random=202',
-                        },
-                        url: 'javascsript:;',
-                        title: '10 Interior Tips In How to Choose a Perfect Frame',
-                        time: '2021/11/01',
-                        author: 'Ray Pan',
-                        views: '100',
-                        comments: '15',
-                    },
-                    {
-                        isBig: false,
-                        isVideo: true,
-                        isTall: false,
-                        img: 'video',
-                        src: {
-                            big: 'https://picsum.photos/1050/330.webp?random=203',
-                            basic: 'https://picsum.photos/500/333.webp?random=203',
-                            video: 'https://picsum.photos/430/430.webp?random=203',
-                            tall: 'https://picsum.photos/368/640.webp?random=203',
-                        },
-                        url: 'javascsript:;',
-                        title: 'This is video title',
-                        time: '2021/11/02',
-                        author: 'Ray Pan',
-                        views: '253',
-                        comments: '2',
-                    },
-                    {
-                        isBig: false,
-                        isVideo: false,
-                        isTall: true,
-                        img: 'tall',
-                        src: {
-                            big: 'https://picsum.photos/1050/330.webp?random=204',
-                            basic: 'https://picsum.photos/500/333.webp?random=204',
-                            video: 'https://picsum.photos/430/430.webp?random=204',
-                            tall: 'https://picsum.photos/368/640.webp?random=204',
-                        },
-                        url: 'javascsript:;',
-                        title: 'Manchester United hopeful David de Gea will sign new contract',
-                        time: '2021/11/04',
-                        author: 'Ray Pan',
-                        views: '333',
-                        comments: '3',
-                    },
-                ],
-            },
-        }
+    props: {
+        postData: {
+            type: Object,
+            required: true,
+        },
     },
     computed: {
         leftAty() {
-            return this.postData.top.filter((obj) => !obj.isTall)
+            return JSON.stringify(this.postData) === '{}' ? [] : this.postData.top.filter((obj) => !obj.isTall)
         },
         rightAty() {
-            return this.postData.top.filter((obj) => obj.isTall)
+            return JSON.stringify(this.postData) === '{}' ? [] : this.postData.top.filter((obj) => obj.isTall)
         },
         moreText() {
-            const title = this.postData.title.toUpperCase()
-            return `ALL ${title}`
+            return JSON.stringify(this.postData) === '{}' ? '' : `ALL ${this.postData.title.toUpperCase()}`
         },
     },
 }
