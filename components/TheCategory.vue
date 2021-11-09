@@ -1,6 +1,6 @@
 <template>
     <div class="category">
-        <div class="container">
+        <div v-if="JSON.stringify(postData) !== '{}'" class="container">
             <h2>{{ postData.title }}</h2>
             <div class="left">
                 <div
