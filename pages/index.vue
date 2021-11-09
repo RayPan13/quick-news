@@ -6,6 +6,8 @@
             <the-kv />
             <the-filter />
             <the-category :post-data="sport" />
+            <the-category :post-data="travel" />
+            <the-category :post-data="lifestyle" />
         </main>
     </div>
 </template>
@@ -27,11 +29,13 @@ export default {
         return {
             scrollTop: 0,
             sport: {},
+            lifestyle: {},
+            travel: {},
         }
     },
     mounted() {
         window.addEventListener('scroll', this.scrollhandler)
-        this.fetchSportPost()
+        this.fetchPost()
     },
     destroyed() {
         window.removeEventListener('scroll', this.scrollhandler)
@@ -40,8 +44,10 @@ export default {
         scrollhandler() {
             this.scrollTop = document.documentElement.scrollTop
         },
-        async fetchSportPost() {
+        async fetchPost() {
             this.sport = await this.$axios.$get('http://localhost:3000/sport.json')
+            this.lifestyle = await this.$axios.$get('http://localhost:3000/lifestyle.json')
+            this.travel = await this.$axios.$get('http://localhost:3000/travel.json')
         },
     },
 }

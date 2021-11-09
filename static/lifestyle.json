@@ -1,0 +1,79 @@
+{
+    "title": "Lifestyle News",
+    "url": "javascript:;",
+    "tag": "LIFESTYLE",
+    "top": [
+        {
+            "isBig": true,
+            "isVideo": false,
+            "isTall": false,
+            "img": "big",
+            "src": {
+                "big": "https://picsum.photos/1050/330.webp?random=401",
+                "basic": "https://picsum.photos/500/333.webp?random=401",
+                "video": "https://picsum.photos/430/430.webp?random=401",
+                "tall": "https://picsum.photos/368/640.webp?random=401"
+            },
+            "url": "javascript:;",
+            "title": "25 Top Tourist Attractions in the United Kingdom, in summer 2019 Year",
+            "time": "2021/11/10",
+            "author": "Ray Pan",
+            "views": "999",
+            "comments": "5"
+        },
+        {
+            "isBig": false,
+            "isVideo": false,
+            "isTall": false,
+            "img": "basic",
+            "src": {
+                "big": "https://picsum.photos/1050/330.webp?random=402",
+                "basic": "https://picsum.photos/500/333.webp?random=402",
+                "video": "https://picsum.photos/430/430.webp?random=402",
+                "tall": "https://picsum.photos/368/640.webp?random=402"
+            },
+            "url": "javascript:;",
+            "title": "10 Interior Tips In How to Choose a Perfect Frame",
+            "time": "2021/11/01",
+            "author": "Ray Pan",
+            "views": "100",
+            "comments": "15"
+        },
+        {
+            "isBig": false,
+            "isVideo": true,
+            "isTall": false,
+            "img": "video",
+            "src": {
+                "big": "https://picsum.photos/1050/330.webp?random=403",
+                "basic": "https://picsum.photos/500/333.webp?random=403",
+                "video": "https://picsum.photos/430/430.webp?random=403",
+                "tall": "https://picsum.photos/368/640.webp?random=403"
+            },
+            "url": "javascript:;",
+            "title": "This is video title",
+            "time": "2021/11/02",
+            "author": "Ray Pan",
+            "views": "253",
+            "comments": "2"
+        },
+        {
+            "isBig": false,
+            "isVideo": false,
+            "isTall": true,
+            "img": "tall",
+            "src": {
+                "big": "https://picsum.photos/1050/330.webp?random=404",
+                "basic": "https://picsum.photos/500/333.webp?random=404",
+                "video": "https://picsum.photos/430/430.webp?random=404",
+                "tall": "https://picsum.photos/368/640.webp?random=404"
+            },
+            "url": "javascript:;",
+            "title": "Manchester United hopeful David de Gea will sign new contract",
+            "time": "2021/11/04",
+            "author": "Ray Pan",
+            "views": "333",
+            "comments": "3"
+        }
+    ]
+}
