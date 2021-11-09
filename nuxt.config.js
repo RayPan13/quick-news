@@ -29,7 +29,13 @@ export default {
     css: ['@/assets/css/normalize.css', '@/assets/scss/basic.scss'],
 
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-    plugins: ['@/plugins/font-awesome'],
+    plugins: [
+        '@/plugins/font-awesome',
+        {
+            src: '@/plugins/aos',
+            ssr: false,
+        },
+    ],
 
     // Auto import components: https://go.nuxtjs.dev/config-components
     components: true,
