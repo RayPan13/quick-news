@@ -6,6 +6,7 @@
                 <div
                     v-for="obj of leftAty"
                     :key="obj.title"
+                    data-aos="fade-up"
                     class="item"
                     :class="{ video: obj.isVideo, big: obj.isBig }"
                 >
@@ -56,7 +57,7 @@
                 </div>
             </div>
             <div class="right">
-                <div v-for="obj of rightAty" :key="obj.title" class="item">
+                <div v-for="obj of rightAty" :key="obj.title" data-aos="fade-up" class="item">
                     <div class="pic">
                         <a :href="obj.url"></a>
                         <div class="tag">{{ postData.tag }}</div>
