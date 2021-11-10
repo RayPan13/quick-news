@@ -1,4 +1,4 @@
 import Vue from 'vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-Vue.component('FontAwesomeIcon', FontAwesomeIcon)
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false

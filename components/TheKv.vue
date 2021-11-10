@@ -39,9 +39,9 @@
                     </div>
                 </div>
             </transition-group>
+
             <div class="dots">
                 <div class="container">
-                    <div class="billboard">News</div>
                     <ul>
                         <li
                             v-for="(num, index) of carousel.length"
