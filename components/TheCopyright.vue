@@ -43,4 +43,47 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import '@/assets/scss/variable';
+.copyright {
+    width: 100%;
+    background-color: #333;
+    padding: 24px 0;
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @include media(768) {
+            flex-wrap: wrap;
+        }
+    }
+    span {
+        color: #888;
+        font-size: 1.4rem;
+        @include media(768) {
+            margin-bottom: 20px;
+        }
+    }
+    ul {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    li {
+        color: #fff;
+        list-style: none;
+        font-size: 1.2rem;
+        font-weight: 600;
+        padding-right: 12px;
+        margin-bottom: 8px;
+        &:hover {
+            color: map-get($color, main);
+        }
+        &:last-child {
+            padding-right: 0;
+        }
+        a {
+            display: block;
+        }
+    }
+}
 </style>

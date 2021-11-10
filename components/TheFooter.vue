@@ -86,7 +86,7 @@ export default {
 footer {
     width: 100%;
     background-color: #000;
-    padding: 48px 0;
+    padding: 48px 0 12px;
     .social {
         width: 100%;
         margin-bottom: 48px;
