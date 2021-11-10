@@ -10,6 +10,7 @@
             <the-category :post-data="lifestyle" />
             <the-subscribe />
         </main>
+        <the-footer />
     </div>
 </template>
 <script>
@@ -19,6 +20,7 @@ import TheKv from '@/components/TheKv.vue'
 import TheFilter from '@/components/TheFilter.vue'
 import TheCategory from '@/components/TheCategory.vue'
 import TheSubscribe from '@/components/TheSubscribe.vue'
+import TheFooter from '@/components/TheFooter.vue'
 export default {
     components: {
         TheCover,
@@ -27,6 +29,7 @@ export default {
         TheFilter,
         TheCategory,
         TheSubscribe,
+        TheFooter,
     },
     data() {
         return {
