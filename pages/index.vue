@@ -11,6 +11,7 @@
             <the-subscribe />
         </main>
         <the-footer />
+        <the-copyright />
     </div>
 </template>
 <script>
@@ -21,6 +22,7 @@ import TheFilter from '@/components/TheFilter.vue'
 import TheCategory from '@/components/TheCategory.vue'
 import TheSubscribe from '@/components/TheSubscribe.vue'
 import TheFooter from '@/components/TheFooter.vue'
+import TheCopyright from '@/components/TheCopyright.vue'
 export default {
     components: {
         TheCover,
@@ -30,6 +32,7 @@ export default {
         TheCategory,
         TheSubscribe,
         TheFooter,
+        TheCopyright,
     },
     data() {
         return {

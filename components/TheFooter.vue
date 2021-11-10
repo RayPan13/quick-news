@@ -122,6 +122,7 @@ footer {
     }
     .info {
         display: flex;
+        margin-bottom: 32px;
         @include media(768) {
             flex-wrap: wrap;
         }
@@ -225,6 +226,9 @@ footer {
                 border-bottom: 1px solid #646464;
             }
         }
+    }
+    .copyright {
+        color: #979797;
     }
 }
 </style>
