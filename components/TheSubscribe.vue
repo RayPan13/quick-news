@@ -21,6 +21,7 @@ export default {
 @import '@/assets/scss/variable';
 .subscribe {
     width: 100%;
+    transform: translateY(32px);
     .box {
         width: 100%;
         padding: 48px 24px;
