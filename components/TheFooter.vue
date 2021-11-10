@@ -221,14 +221,14 @@ footer {
             padding: 24px 0;
             p {
                 color: #fff;
+                a {
+                    white-space: nowrap;
+                }
             }
             &:last-child {
                 border-bottom: 1px solid #646464;
             }
         }
-    }
-    .copyright {
-        color: #979797;
     }
 }
 </style>

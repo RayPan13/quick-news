@@ -45,7 +45,7 @@ export default {
 @import '@/assets/scss/variable';
 .copyright {
     width: 100%;
-    background-color: #333;
+    background-color: #2a2a2a;
     padding: 24px 0;
     .container {
         display: flex;
