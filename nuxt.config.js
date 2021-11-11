@@ -5,15 +5,25 @@ export default {
 
     // Global page headers: https://go.nuxtjs.dev/config-head
     head: {
-        title: 'quick-news',
         htmlAttrs: {
             lang: 'en',
         },
+        title: 'Quick News',
         meta: [
             { charset: 'utf-8' },
-            { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-            { hid: 'description', name: 'description', content: '' },
+            {
+                'http-equiv': 'X-UA-Compatible',
+                content: 'IE=edge,chrome=1',
+            },
+            {
+                name: 'viewport',
+                content: 'width=device-width, initial-scale=1',
+            },
             { name: 'format-detection', content: 'telephone=no' },
+            { hid: 'title', name: 'title', content: 'Quick News' },
+            { hid: 'description', name: 'description', content: '共用的描述' },
+            { hid: 'keywords', name: 'keywords', content: 'html,css,js,vue,nuxt' },
+            { hid: 'author', name: 'author', content: 'RayPan' },
         ],
         link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     },
