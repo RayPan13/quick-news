@@ -36,13 +36,13 @@ export default {
     },
     methods: {
         async fetchPost() {
-            this.lifestyle = await this.$axios.$get('http://localhost:3000/lifestyle.json').catch(() => {
+            this.lifestyle = await this.$axios.$get('/api/lifestyle.json').catch(() => {
                 return {}
             })
-            this.sport = await this.$axios.$get('http://localhost:3000/sport.json').catch(() => {
+            this.sport = await this.$axios.$get('/api/sport.json').catch(() => {
                 return {}
             })
-            this.travel = await this.$axios.$get('http://localhost:3000/travel.json').catch(() => {
+            this.travel = await this.$axios.$get('/api/travel.json').catch(() => {
                 return {}
             })
         },
