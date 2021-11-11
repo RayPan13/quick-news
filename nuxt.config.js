@@ -1,9 +1,8 @@
+const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? { router: { base: '/quick-news/' } } : {}
 export default {
     // Target: https://go.nuxtjs.dev/config-target
     target: 'static',
-    router: {
-        base: '/quick-news/',
-    },
+
     // Global page headers: https://go.nuxtjs.dev/config-head
     head: {
         htmlAttrs: {
@@ -69,6 +68,7 @@ export default {
             },
         ],
     },
+    ...routerBase,
     // Build Configuration: https://go.nuxtjs.dev/config-build
     build: {},
     generate: {
