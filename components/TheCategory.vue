@@ -124,7 +124,7 @@ export default {
         position: relative;
     }
     .billboard {
-        color: rgba(0, 0, 0, 0.2);
+        color: rgba(0, 0, 0, 0.1);
     }
     h2 {
         font-size: 5rem;
