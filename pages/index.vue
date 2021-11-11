@@ -32,6 +32,7 @@ export default {
     },
     mounted() {
         this.fetchPost()
+        this.$store.dispatch('updateNav', false)
     },
     methods: {
         async fetchPost() {

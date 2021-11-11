@@ -2,7 +2,7 @@
     <nav :class="{ open }">
         <ul>
             <li v-for="item of menu" :key="item.id">
-                <a :href="item.url">{{ item.name }}</a>
+                <nuxt-link :to="item.url">{{ item.name }}</nuxt-link>
                 <ul>
                     <li v-for="subItem of item.sub" :key="subItem.id">
                         <a :href="subItem.url">{{ subItem.name }}</a>
@@ -24,54 +24,54 @@ export default {
                 {
                     id: 1,
                     name: 'FRONT PAGE',
-                    url: 'javascript:;',
+                    url: '/',
                     sub: false,
                 },
                 {
                     id: 2,
                     name: 'PAGE',
-                    url: 'javascript:;',
+                    url: '/page',
                     sub: false,
                 },
                 {
                     id: 3,
                     name: 'POST(CATEGORY)',
-                    url: 'javascript:;',
+                    url: '',
                     sub: false,
                 },
                 {
                     id: 4,
                     name: 'SINGLE(POST)',
-                    url: 'javascript:;',
+                    url: '',
                     sub: false,
                 },
                 {
                     id: 5,
                     name: 'CONTACT',
-                    url: 'javascript:;',
+                    url: '',
                     sub: false,
                 },
                 {
                     id: 6,
                     name: '404(ERROR)',
-                    url: 'javascript:;',
+                    url: '',
                     sub: false,
                 },
                 {
                     id: 7,
                     name: 'SUBMENUS',
-                    url: 'javascript:;',
+                    url: '',
                     sub: [
                         {
                             id: 71,
                             name: 'Submenu 1',
-                            url: 'javascript:;',
+                            url: '',
                             sub: false,
                         },
                         {
                             id: 72,
                             name: 'Submenu 2',
-                            url: 'javascript:;',
+                            url: '',
                             sub: false,
                         },
                     ],
@@ -124,20 +124,7 @@ nav {
         &:last-child {
             margin-right: 0;
         }
-        &::after {
-            content: '';
-            display: none;
-            position: absolute;
-            width: 100%;
-            height: 4px;
-            background-color: map-get($color, main);
-            bottom: -2px;
-            left: 0;
-        }
         &:hover {
-            &::after {
-                display: inline-block;
-            }
             ul {
                 opacity: 1;
                 z-index: 0;
@@ -159,7 +146,6 @@ nav {
                 width: auto;
                 z-index: 0;
             }
-
             li:hover {
                 &::after {
                     display: none;
@@ -170,6 +156,38 @@ nav {
     a {
         display: block;
         padding: 32px 0;
+        &::after {
+            content: '';
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            background-color: map-get($color, main);
+            bottom: -2px;
+            left: 0;
+        }
+        &:hover {
+            &::after {
+                display: inline-block;
+                @include media(1200) {
+                    display: none;
+                }
+            }
+            @include media(1200) {
+                color: #000;
+            }
+        }
+        &.nuxt-link-exact-active {
+            &::after {
+                display: inline-block;
+                @include media(1200) {
+                    display: none;
+                }
+            }
+            @include media(1200) {
+                color: #000;
+            }
+        }
         @include media(1200) {
             padding: 16px 0;
         }
