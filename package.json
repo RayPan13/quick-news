@@ -8,7 +8,8 @@
         "start": "nuxt start",
         "generate": "nuxt generate",
         "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
-        "lint": "npm run lint:js"
+        "lint": "npm run lint:js",
+        "generate:gh-pages": "cross-env DEPLOY_ENV=GH_PAGES nuxt generate"
     },
     "dependencies": {
         "@fortawesome/free-brands-svg-icons": "^5.15.4",
@@ -24,6 +25,7 @@
         "@babel/eslint-parser": "^7.14.7",
         "@nuxtjs/eslint-config": "^6.0.1",
         "@nuxtjs/eslint-module": "^3.0.2",
+        "cross-env": "^7.0.3",
         "eslint": "^7.29.0",
         "eslint-config-prettier": "^8.3.0",
         "eslint-plugin-nuxt": "^2.0.0",
