@@ -68,6 +68,12 @@ export default {
             },
         ],
     },
+    axios: {
+        proxy: true,
+    },
+    proxy: {
+        '/api': 'https://raypan13.github.io/quick-news/api',
+    },
     ...routerBase,
     // Build Configuration: https://go.nuxtjs.dev/config-build
     build: {},
