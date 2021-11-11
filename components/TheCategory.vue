@@ -1,6 +1,7 @@
 <template>
     <div class="category">
         <div v-if="JSON.stringify(postData) !== '{}'" class="container">
+            <div class="billboard">{{ postData.title }}</div>
             <h2>{{ postData.title }}</h2>
             <div class="left">
                 <div
@@ -120,6 +121,10 @@ export default {
     .container {
         display: flex;
         flex-wrap: wrap;
+        position: relative;
+    }
+    .billboard {
+        color: rgba(0, 0, 0, 0.2);
     }
     h2 {
         font-size: 5rem;

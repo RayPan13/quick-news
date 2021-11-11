@@ -67,3 +67,15 @@ export default {
     },
 }
 </script>
+<style lang="scss">
+.billboard {
+    position: absolute;
+    top: 50%;
+    left: -96px;
+    font-size: 10rem;
+    font-weight: 300;
+    transform: translate(-50%, -50%) rotate(-90deg);
+    color: rgba(255, 255, 255, 0.2);
+    z-index: 3;
+}
+</style>
