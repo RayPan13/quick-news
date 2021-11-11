@@ -196,14 +196,14 @@ export default {
             }
         }
     }
-    .options,
-    .inputOptions {
+    .options {
         position: absolute;
         top: 100%;
         left: 0;
         width: 100%;
         background-color: #f5f5f5;
         display: none;
+        z-index: 3;
         &.active {
             display: block;
         }
