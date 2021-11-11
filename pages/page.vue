@@ -1,8 +1,23 @@
 <template>
-    <div id="page"></div>
+    <div id="page">
+        <main>
+            <the-intro :intro="intro" />
+        </main>
+    </div>
 </template>
 <script>
+import TheIntro from '@/components/TheIntro.vue'
 export default {
+    components: { TheIntro },
+    data() {
+        return {
+            intro: {
+                image: 'https://picsum.photos/1920/1080.webp?random=1',
+                title: 'About our working in team Quick News',
+                subtitle: 'ABOUT US',
+            },
+        }
+    },
     head: {
         title: 'Page - Quick News',
         meta: [

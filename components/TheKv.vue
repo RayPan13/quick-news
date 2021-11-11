@@ -6,7 +6,7 @@
                     v-for="(obj, index) of carousel"
                     v-show="index === showIndex"
                     :key="obj.id"
-                    :style="{ background: 'url(' + obj.bg + ')' }"
+                    :style="{ backgroundImage: 'url(' + obj.bg + ')' }"
                     class="item"
                 >
                     <div class="container">
@@ -151,6 +151,7 @@ export default {
     .item {
         background-size: cover;
         background-position: center;
+        background-repeat: no-repeat;
         width: 100%;
         height: 600px;
         position: absolute;
