@@ -1,4 +1,3 @@
-const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? { router: { base: '/quick-news/' } } : {}
 export default {
     // Target: https://go.nuxtjs.dev/config-target
     target: 'static',
@@ -68,7 +67,7 @@ export default {
             },
         ],
     },
-    ...routerBase,
+    router: { base: '/quick-news/' },
     // Build Configuration: https://go.nuxtjs.dev/config-build
     build: {},
     generate: {
