@@ -1,4 +1,7 @@
-const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? { router: { base: '/quick-news/' } } : {}
+const routerBase =
+    process.env.DEPLOY_ENV === 'GH_PAGES'
+        ? { axios: { baseURL: '/quick-news/' }, router: { base: '/quick-news/' } }
+        : {}
 export default {
     // Target: https://go.nuxtjs.dev/config-target
     target: 'static',
@@ -67,12 +70,6 @@ export default {
                 icons: ['fab'],
             },
         ],
-    },
-    axios: {
-        proxy: true,
-    },
-    proxy: {
-        '/api': 'https://raypan13.github.io/quick-news/',
     },
     ...routerBase,
     // Build Configuration: https://go.nuxtjs.dev/config-build
