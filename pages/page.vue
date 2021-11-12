@@ -26,9 +26,11 @@
                     <div class="aside">
                         <div class="hot">
                             <p>HOT</p>
+                            <the-aside-carousel :carousel="article.hot" box="hot" :show="1" />
                         </div>
                         <div class="related">
                             <p>RELATED NEWS</p>
+                            <the-aside-carousel :carousel="article.related" box="related" :show="2" />
                         </div>
                     </div>
                 </article>
@@ -38,8 +40,9 @@
 </template>
 <script>
 import TheIntro from '@/components/TheIntro.vue'
+import TheAsideCarousel from '@/components/TheAsideCarousel.vue'
 export default {
-    components: { TheIntro },
+    components: { TheIntro, TheAsideCarousel },
     data() {
         return {
             intro: {
@@ -206,7 +209,7 @@ article {
         }
     }
     .box {
-        flex-basis: 80%;
+        flex-basis: calc(100% - 210px);
         padding-right: 5%;
         padding-left: 10%;
         @include media(1200) {
@@ -257,16 +260,21 @@ article {
                 font-size: 1.6rem;
                 line-height: 1.5;
             }
+            ::v-deep a {
+                color: map-get($color, main);
+                font-weight: 600;
+                text-decoration: underline;
+            }
         }
     }
     .aside {
-        flex-basis: 20%;
+        flex-basis: 210px;
         @include media(768) {
             flex-basis: 100%;
         }
         .hot,
         .related {
-            padding: 32px 12px;
+            padding: 32px 0;
         }
         .hot {
             color: #fff;
@@ -274,6 +282,10 @@ article {
         }
         .related {
             background-color: #fff;
+        }
+        p {
+            margin: 0 0 12px;
+            padding-left: 12px;
         }
     }
 }
