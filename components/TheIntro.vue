@@ -1,7 +1,7 @@
 <template>
     <div class="intro" :style="{ backgroundImage: 'url(' + intro.image + ')' }">
         <div class="container">
-            <h4>{{ intro.subtitle }}</h4>
+            <h4 :class="{ tag: intro.tag }">{{ intro.subtitle }}</h4>
             <h1>{{ intro.title }}</h1>
         </div>
     </div>
@@ -46,15 +46,21 @@ export default {
     .container {
         position: relative;
         z-index: 2;
+        text-align: center;
     }
     h4 {
-        text-align: center;
         margin: 0 0 12px;
         font-size: 1.6rem;
         font-weight: 600;
+        &.tag {
+            border: 2px solid map-get($color, main);
+            display: inline-block;
+            color: map-get($color, main);
+            font-size: 1.4rem;
+            padding: 12px;
+        }
     }
     h1 {
-        text-align: center;
         margin: 0;
         font-size: 5rem;
         font-weight: 300;

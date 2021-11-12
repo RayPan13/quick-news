@@ -15,6 +15,7 @@ export default {
                 image: 'https://picsum.photos/1920/1080.webp?random=1',
                 title: 'About our working in team Quick News',
                 subtitle: 'ABOUT US',
+                tag: false,
             },
         }
     },
