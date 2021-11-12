@@ -137,15 +137,34 @@ article {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        flex-basis: 100%;
         margin-bottom: 24px;
+        position: absolute;
+        top: 52px;
+        left: -15%;
+        flex-direction: column;
+        @include media(1200) {
+            position: relative;
+            top: 0;
+            left: 0;
+            flex-basis: 100%;
+            flex-direction: row;
+        }
         @include media(768) {
             flex-wrap: wrap;
         }
         h2 {
-            font-size: 4rem;
-            color: #000;
+            font-size: 8rem;
+            color: rgba(0, 0, 0, 0.1);
             margin: 0;
+            order: 1;
+            transform-origin: center;
+            transform: rotate(-90deg) translate(-80%, 8%);
+            @include media(1200) {
+                font-size: 4rem;
+                transform: rotate(0) translateX(0);
+                order: 0;
+                color: #000;
+            }
             @include media(768) {
                 flex-basis: 100%;
                 margin-bottom: 24px;
@@ -155,7 +174,9 @@ article {
             list-style: none;
             padding: 0;
             margin: 0;
-            display: flex;
+            @include media(1200) {
+                display: flex;
+            }
             @include media(768) {
                 flex-basis: 100%;
             }
@@ -163,10 +184,16 @@ article {
         li {
             font-size: 2.5rem;
             position: relative;
-            margin-right: 12px;
+            margin-bottom: 12px;
             color: #aaa;
+            @include media(1200) {
+                margin-right: 12px;
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
             &:last-child {
-                margin-right: 0;
+                margin-bottom: 0;
             }
             a {
                 position: absolute;
@@ -181,6 +208,10 @@ article {
     .box {
         flex-basis: 80%;
         padding-right: 5%;
+        padding-left: 10%;
+        @include media(1200) {
+            padding-left: 0;
+        }
         @include media(768) {
             flex-basis: 100%;
             padding-right: 0;
