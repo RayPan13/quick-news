@@ -23,7 +23,7 @@ export default {
     props: {
         scrollTop: {
             type: Number,
-            default: 0,
+            required: true,
         },
     },
     data() {
