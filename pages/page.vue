@@ -17,7 +17,7 @@
                     </div>
                     <div class="box">
                         <!-- eslint-disable vue/no-v-html -->
-                        <section v-for="obj of article.section" :key="obj.title">
+                        <section v-for="(obj, index) of article.section" :key="obj.title + index">
                             <h3>{{ obj.title }}</h3>
                             <div class="content" v-html="obj.content"></div>
                         </section>
