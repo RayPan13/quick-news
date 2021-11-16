@@ -67,7 +67,7 @@ export default {
             })
         },
         setBigStyle(index) {
-            const itemStyle = [1, 0, 0, 0, 0]
+            const itemStyle = [1, 0, 0, 0, 0, 0, 1, 0, 0, 0]
             return itemStyle[index]
         },
     },
