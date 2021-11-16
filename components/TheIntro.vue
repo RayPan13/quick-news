@@ -21,7 +21,7 @@ export default {
 @import '@/assets/scss/variable';
 .intro {
     width: 100%;
-    height: 500px;
+    height: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,7 +31,7 @@ export default {
     background-position: center;
     background-repeat: no-repeat;
     @include media(768) {
-        height: 400px;
+        height: 300px;
     }
     &::after {
         content: '';

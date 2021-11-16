@@ -46,7 +46,7 @@ export default {
     data() {
         return {
             intro: {
-                image: 'https://picsum.photos/1920/1080.webp?random=1',
+                image: 'https://picsum.photos/1920/1080.jpg?random=1',
                 title: 'About our working in team Quick News',
                 subtitle: 'ABOUT US',
                 tag: false,
