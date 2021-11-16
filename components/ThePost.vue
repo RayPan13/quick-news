@@ -56,10 +56,16 @@ export default {
         return {
             postData: {},
             category: 'lifestyle',
+            ww: 0,
         }
     },
     mounted() {
         this.fetchPost()
+        this.getWindowWidth()
+        window.addEventListener('resize', this.getWindowWidth)
+    },
+    destroyed() {
+        window.removeEventListener('resize', this.getWindowWidth)
     },
     methods: {
         async fetchPost() {
@@ -69,7 +75,10 @@ export default {
         },
         setBigStyle(index) {
             const itemStyle = [1, 0, 0, 0, 0, 0, 1, 0, 0, 0]
-            return itemStyle[index]
+            return this.ww > 768 ? itemStyle[index] : false
+        },
+        getWindowWidth() {
+            this.ww = window.innerWidth
         },
     },
 }
@@ -152,13 +161,6 @@ export default {
         }
         > div {
             margin: 0 12px 12px 0;
-        }
-        @include media(768) {
-            .author,
-            .views,
-            .comments {
-                display: none;
-            }
         }
     }
 }
