@@ -26,11 +26,11 @@
                     <div class="aside">
                         <div class="hot">
                             <p>HOT</p>
-                            <the-aside-carousel :carousel="article.hot" box="hot" :show="1" />
+                            <the-aside-carousel :carousel="article.hot" box="hot" />
                         </div>
                         <div class="related">
                             <p>RELATED NEWS</p>
-                            <the-aside-carousel :carousel="article.related" box="related" :show="2" />
+                            <the-aside-carousel :carousel="article.related" box="related" />
                         </div>
                     </div>
                 </article>
@@ -88,11 +88,13 @@ export default {
                 ],
                 hot: [
                     {
+                        id: 1001,
                         url: 'javascript:;',
                         title: '19 Top Tourists Attractions in United States this summer!',
                         date: '2021/11/12',
                     },
                     {
+                        id: 1002,
                         url: 'javascript:;',
                         title: '19 Top Tourists Attractions!',
                         date: '2021/11/12',
@@ -100,11 +102,13 @@ export default {
                 ],
                 related: [
                     {
+                        id: 2001,
                         url: 'javascript:;',
                         title: '19 Top Tourists Attractions in United States this summer!',
                         date: '2021/11/12',
                     },
                     {
+                        id: 2002,
                         url: 'javascript:;',
                         title: '19 Top Tourists Attractions!',
                         date: '2021/11/12',
@@ -275,6 +279,7 @@ article {
         .hot,
         .related {
             padding: 32px 0;
+            overflow: hidden;
         }
         .hot {
             color: #fff;

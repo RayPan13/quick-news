@@ -1,15 +1,21 @@
 <template>
     <div class="carousel">
         <div class="dots" :class="box">
-            <div v-for="num of carousel.length" :key="num" class="dot" :class="{ active: num === show }"></div>
+            <div
+                v-for="num of carousel.length"
+                :key="num"
+                class="dot"
+                :class="{ active: num === show + 1 }"
+                @click="setShow(num - 1)"
+            ></div>
         </div>
         <div class="view">
-            <ul>
-                <li v-for="obj of carousel" :key="obj.title">
+            <transition-group :name="transitionName" tag="ul">
+                <li v-for="(obj, index) of carousel" v-show="index === show" :key="obj.id">
                     <a :href="obj.url">{{ obj.title }}</a>
                     <p class="date"><fa :icon="['far', 'calendar']" />{{ obj.date }}</p>
                 </li>
-            </ul>
+            </transition-group>
         </div>
     </div>
 </template>
@@ -25,9 +31,41 @@ export default {
             type: String,
             default: '',
         },
-        show: {
-            type: Number,
-            default: 1,
+    },
+    data() {
+        return {
+            show: 0,
+            transitionName: 'left-in',
+        }
+    },
+    watch: {
+        show(nVal) {
+            const max = this.carousel.length - 1
+            if (nVal < 0) {
+                this.show = max
+            }
+            if (nVal > max) {
+                this.show = 0
+            }
+        },
+    },
+    mounted() {
+        setInterval(() => {
+            this.show = this.show + 1
+        }, 5000)
+    },
+
+    methods: {
+        setShow(index) {
+            this.setTransition(index)
+            this.show = index
+        },
+        setTransition(index) {
+            if (index > this.show) {
+                this.transitionName = 'left-in'
+            } else {
+                this.transitionName = 'right-in'
+            }
         },
     },
 }
@@ -70,19 +108,24 @@ export default {
 }
 .view {
     width: 100%;
-    overflow: hidden;
+    padding-top: 30%;
+    @include media(768) {
+        padding-top: 15%;
+    }
 }
 ul {
     list-style: none;
     margin: 0;
     padding: 0;
-    display: flex;
-    align-items: center;
+    display: block;
+    width: 100%;
 }
 li {
+    position: absolute;
+    top: 0;
+    left: 0;
     font-size: 1.4rem;
-    flex-basis: 100%;
-    flex-shrink: 0;
+    width: 100%;
     a {
         width: 100%;
         display: block;
@@ -101,5 +144,42 @@ li {
     svg {
         margin-right: 8px;
     }
+}
+.left-in-enter {
+    transform: translateX(100%);
+}
+.left-in-enter-active {
+    transition: transform 0.5s;
+}
+.left-in-enter-to {
+    transform: translateX(0);
+}
+.left-in-leave {
+    transform: translateX(0);
+}
+.left-in-leave-active {
+    transition: transform 0.5s;
+}
+.left-in-leave-to {
+    transform: translateX(-100%);
+}
+
+.right-in-enter {
+    transform: translateX(-100%);
+}
+.right-in-enter-active {
+    transition: transform 0.5s;
+}
+.right-in-enter-to {
+    transform: translateX(0);
+}
+.right-in-leave {
+    transform: translateX(0);
+}
+.right-in-leave-active {
+    transition: transform 0.5s;
+}
+.right-in-leave-to {
+    transform: translateX(100%);
 }
 </style>
