@@ -9,6 +9,7 @@
             >
                 <div class="pic">
                     <a :href="obj.url"></a>
+                    <div class="tag">{{ category }}</div>
                     <img :src="setBigStyle(index) ? obj.src[0] : obj.src[1]" alt="" />
                 </div>
                 <div class="txt">
@@ -119,6 +120,17 @@ export default {
             transition-duration: 1s;
             width: 100%;
         }
+    }
+    .tag {
+        background-color: rgba(map-get($color, main), 0.8);
+        color: #fff;
+        border-radius: 4px;
+        padding: 12px;
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        z-index: 2;
+        font-size: 1.4rem;
     }
     h3 {
         font-size: 1.8rem;
