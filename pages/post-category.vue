@@ -10,6 +10,16 @@
 import TheIntro from '@/components/TheIntro.vue'
 export default {
     components: { TheIntro },
+    data() {
+        return {
+            intro: {
+                image: 'https://picsum.photos/1920/1080.webp?random=2',
+                title: 'Lifestyle',
+                subtitle: 'NEWS',
+                tag: false,
+            },
+        }
+    },
     head: {
         title: 'POST(Category) - Quick News',
         meta: [
