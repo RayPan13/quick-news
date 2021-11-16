@@ -30,9 +30,6 @@ export default {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    @include media(768) {
-        height: 300px;
-    }
     &::after {
         content: '';
         display: inline-block;

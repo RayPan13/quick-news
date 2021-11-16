@@ -2,14 +2,16 @@
     <div id="post-category">
         <main>
             <the-intro :intro="intro" />
+            <the-post />
         </main>
     </div>
 </template>
 
 <script>
 import TheIntro from '@/components/TheIntro.vue'
+import ThePost from '@/components/ThePost.vue'
 export default {
-    components: { TheIntro },
+    components: { TheIntro, ThePost },
     data() {
         return {
             intro: {
@@ -18,6 +20,7 @@ export default {
                 subtitle: 'NEWS',
                 tag: false,
             },
+            lifestyle: {},
         }
     },
     head: {
