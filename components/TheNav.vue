@@ -36,7 +36,7 @@ export default {
                 {
                     id: 3,
                     name: 'POST(CATEGORY)',
-                    url: '/',
+                    url: '/post-category',
                     sub: false,
                 },
                 {
