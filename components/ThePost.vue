@@ -129,6 +129,10 @@ export default {
             transform-origin: center;
             transition-duration: 1s;
             width: 100%;
+            &.isLoading {
+                height: 230px;
+                background-color: #ddd;
+            }
         }
     }
     .tag {
