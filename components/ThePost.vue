@@ -2,7 +2,7 @@
     <div class="post">
         <div class="container">
             <div
-                v-for="(obj, index) of postData[category]"
+                v-for="(obj, index) of showAry"
                 :key="obj.id"
                 data-aos="fade-up"
                 class="item"
@@ -47,6 +47,28 @@
                     </div>
                 </div>
             </div>
+            <div class="control">
+                <div class="prev" :class="{ disable: show === 1 }" @click="changeShow(-1)">
+                    <fa :icon="['fas', 'angle-left']" />
+                    <span>PREV</span>
+                </div>
+                <div class="pages">
+                    <ul>
+                        <li
+                            v-for="page of pageLength"
+                            :key="page"
+                            :class="{ active: show === page }"
+                            @click="setShow(page)"
+                        >
+                            {{ page }}
+                        </li>
+                    </ul>
+                </div>
+                <div class="next" :class="{ disable: show === pageLength }" @click="changeShow(1)">
+                    <span>NEXT</span>
+                    <fa :icon="['fas', 'angle-right']" />
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -58,7 +80,25 @@ export default {
             postData: {},
             category: 'lifestyle',
             ww: 0,
+            pageCount: 5,
+            show: 1,
         }
+    },
+    computed: {
+        pageLength() {
+            let len = 0
+            this.postData[this.category] ? (len = this.postData[this.category].length) : (len = 0)
+            return Math.ceil(len / this.pageCount)
+        },
+        showAry() {
+            if (this.postData[this.category]) {
+                const begin = this.pageCount * (this.show - 1)
+                const end = this.pageCount * this.show
+                return this.postData[this.category].slice(begin, end)
+            } else {
+                return []
+            }
+        },
     },
     mounted() {
         this.fetchPost()
@@ -80,6 +120,15 @@ export default {
         },
         getWindowWidth() {
             this.ww = window.innerWidth
+        },
+        setShow(index) {
+            this.show = index
+        },
+        changeShow(direction) {
+            const index = this.show + direction
+            if (index > 0 && index <= this.pageLength) {
+                this.setShow(index)
+            }
         },
     },
 }
@@ -166,6 +215,59 @@ export default {
         }
         > div {
             margin: 0 12px 12px 0;
+        }
+    }
+    .control {
+        border-top: 1px solid #ddd;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 12px 0 0;
+        .prev,
+        .next {
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: color 0.5s;
+            cursor: pointer;
+            &:hover {
+                color: map-get($color, main);
+            }
+            &.disable {
+                color: #aaa;
+                cursor: auto;
+                &:hover {
+                    color: #aaa;
+                }
+            }
+        }
+        .pages {
+            border-style: double;
+            border-width: 0 0 4px 0;
+            border-color: #aaa;
+            padding-bottom: 8px;
+            flex-basis: 50%;
+            text-align: center;
+        }
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: inline-flex;
+        }
+        li {
+            padding: 8px;
+            margin: 0 4px;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: color 0.5s;
+            cursor: pointer;
+            &:hover {
+                color: map-get($color, main);
+            }
+            &.active {
+                color: #fff;
+                background-color: map-get($color, main);
+            }
         }
     }
 }
