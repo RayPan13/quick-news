@@ -1,13 +1,7 @@
 <template>
     <div class="post">
         <div class="container">
-            <div
-                v-for="(obj, index) of showAry"
-                :key="obj.id"
-                data-aos="fade-up"
-                class="item"
-                :class="{ big: setBigStyle(index) }"
-            >
+            <div v-for="(obj, index) of showAry" :key="obj.id" class="item" :class="{ big: setBigStyle(index) }">
                 <div class="pic">
                     <a :href="obj.url"></a>
                     <div class="tag">{{ category }}</div>
@@ -54,8 +48,10 @@
                 </div>
                 <div class="pages">
                     <ul>
+                        <li v-if="pageLength > 3" class="ellipsis">...</li>
                         <li
                             v-for="page of pageLength"
+                            v-show="pageLength > 3 ? page === 1 || page === show || page === pageLength : true"
                             :key="page"
                             :class="{ active: show === page }"
                             @click="setShow(page)"
@@ -80,7 +76,7 @@ export default {
             postData: {},
             category: 'lifestyle',
             ww: 0,
-            pageCount: 5,
+            pageCount: 15,
             show: 1,
         }
     },
@@ -181,6 +177,15 @@ export default {
             &.isLoading {
                 height: 230px;
                 background-color: #ddd;
+                @include media(1200) {
+                    height: 200px;
+                }
+                @include media(990) {
+                    height: 140px;
+                }
+                @include media(768) {
+                    height: 320px;
+                }
             }
         }
     }
@@ -261,12 +266,22 @@ export default {
             border-radius: 4px;
             transition: color 0.5s;
             cursor: pointer;
+            &:last-child {
+                order: 10;
+            }
             &:hover {
                 color: map-get($color, main);
             }
             &.active {
                 color: #fff;
                 background-color: map-get($color, main);
+            }
+            &.ellipsis {
+                order: 9;
+                cursor: auto;
+                &:hover {
+                    color: #000;
+                }
             }
         }
     }
