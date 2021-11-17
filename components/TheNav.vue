@@ -48,7 +48,7 @@ export default {
                 {
                     id: 5,
                     name: 'CONTACT',
-                    url: '/',
+                    url: '/contact',
                     sub: false,
                 },
                 {
