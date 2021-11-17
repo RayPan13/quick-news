@@ -4,6 +4,7 @@
             <div
                 v-for="(obj, index) of postData[category]"
                 :key="obj.id"
+                data-aos="fade-up"
                 class="item"
                 :class="{ big: setBigStyle(index) }"
             >
@@ -74,7 +75,7 @@ export default {
             })
         },
         setBigStyle(index) {
-            const itemStyle = [1, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+            const itemStyle = [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0]
             return this.ww > 768 ? itemStyle[index] : false
         },
         getWindowWidth() {
