@@ -2,13 +2,15 @@
     <div id="contact">
         <main>
             <the-intro :intro="intro" />
+            <the-map />
         </main>
     </div>
 </template>
 <script>
 import TheIntro from '@/components/TheIntro.vue'
+import TheMap from '@/components/TheMap.vue'
 export default {
-    components: { TheIntro },
+    components: { TheIntro, TheMap },
     data() {
         return {
             intro: {
