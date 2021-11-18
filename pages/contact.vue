@@ -25,7 +25,18 @@
                         </ul>
                     </div>
                 </div>
-                <div class="form"></div>
+                <div class="form">
+                    <form action="" method="post">
+                        <div class="input"><input type="text" name="name" placeholder="Name *" /></div>
+                        <div class="input"><input type="email" name="email" placeholder="Email *" /></div>
+                        <div class="input"><input type="tel" name="phone" placeholder="Phone" /></div>
+                        <div class="input"><input type="text" name="web" placeholder="Website" /></div>
+                        <div class="textarea">
+                            <textarea name="message" placeholder="Message *"></textarea>
+                        </div>
+                        <button type="button">SEND MESSAGE</button>
+                    </form>
+                </div>
             </div>
             <the-map />
         </main>
@@ -97,8 +108,11 @@ export default {
     }
     .info {
         flex-basis: 50%;
+        padding-right: 2.5%;
         @include media(990) {
             flex-basis: 100%;
+            padding-right: 0%;
+            margin-bottom: 24px;
         }
         h2 {
             font-size: 3rem;
@@ -181,6 +195,44 @@ export default {
         flex-basis: 50%;
         @include media(990) {
             flex-basis: 100%;
+        }
+        form {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .input {
+            flex-basis: 50%;
+            display: inline-block;
+            &:nth-child(odd) {
+                padding-right: 8px;
+                padding-bottom: 16px;
+            }
+            &:nth-child(even) {
+                padding-left: 8px;
+                padding-bottom: 16px;
+            }
+        }
+        .textarea {
+            flex-basis: 100%;
+            height: 100px;
+            margin-bottom: 16px;
+        }
+        input,
+        textarea {
+            width: 100%;
+            height: 100%;
+            font-size: 1.4rem;
+            padding: 8px;
+        }
+        button {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #fff;
+            background-color: map-get($color, main);
+            padding: 12px 24px;
+            border: 0;
+            border-radius: 4px;
+            cursor: pointer;
         }
     }
 }
