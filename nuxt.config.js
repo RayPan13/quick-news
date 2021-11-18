@@ -28,7 +28,6 @@ export default {
             { hid: 'keywords', name: 'keywords', content: 'html,css,js,vue,nuxt' },
             { hid: 'author', name: 'author', content: 'RayPan' },
         ],
-        link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     },
 
     // Global CSS: https://go.nuxtjs.dev/config-css
