@@ -9,7 +9,10 @@
                     <div class="box">
                         <div v-for="obj of info.contact" :key="obj.id" class="item">
                             <ul>
-                                <li v-for="item of obj.list" :key="item.id">{{ item.text }}</li>
+                                <li v-for="item of obj.list" :key="item.id">
+                                    <fa :icon="[item.icon[0], item.icon[1]]" />
+                                    {{ item.text }}
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -48,17 +51,17 @@ export default {
                     {
                         id: 'left',
                         list: [
-                            { id: 'addr', icon: '', text: '7457 River Street Buffalo, NY 14224' },
-                            { id: 'email', icon: '', text: 'info@example.com' },
-                            { id: 'phone', icon: '', text: '+123 456 7890' },
+                            { id: 'addr', icon: ['fas', 'home'], text: '7457 River Street Buffalo, NY 14224' },
+                            { id: 'email', icon: ['fas', 'envelope'], text: 'info@example.com' },
+                            { id: 'phone', icon: ['fas', 'phone'], text: '+123 456 7890' },
                         ],
                     },
                     {
                         id: 'right',
                         list: [
-                            { id: 'addr', icon: '', text: '813 Stonybrook Road Champaign, IL 61821' },
-                            { id: 'email', icon: '', text: 'office@example.com' },
-                            { id: 'phone', icon: '', text: '+098 765 4321' },
+                            { id: 'addr', icon: ['fas', 'home'], text: '813 Stonybrook Road Champaign, IL 61821' },
+                            { id: 'email', icon: ['fas', 'envelope'], text: 'office@example.com' },
+                            { id: 'phone', icon: ['fas', 'phone'], text: '+098 765 4321' },
                         ],
                     },
                 ],
@@ -87,12 +90,98 @@ export default {
 #contact {
     .container {
         display: flex;
+        padding: 48px 20px;
+        @include media(990) {
+            flex-wrap: wrap;
+        }
     }
     .info {
         flex-basis: 50%;
+        @include media(990) {
+            flex-basis: 100%;
+        }
+        h2 {
+            font-size: 3rem;
+            margin: 0 0 24px;
+        }
+        p {
+            font-size: 1.6rem;
+            line-height: 1.5;
+            margin: 0 0 24px;
+        }
+        .box {
+            display: flex;
+            @include media(580) {
+                flex-wrap: wrap;
+            }
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .item {
+            flex-basis: 50%;
+            margin-bottom: 12px;
+            @include media(580) {
+                flex-basis: 100%;
+            }
+            &:first-child {
+                padding-right: 2.5%;
+                @include media(580) {
+                    padding-right: 0;
+                }
+            }
+            &:last-child {
+                padding-left: 2.5%;
+                @include media(580) {
+                    padding-left: 0;
+                }
+            }
+            li {
+                font-size: 1.4rem;
+                line-height: 1.5;
+                margin-bottom: 8px;
+                padding-left: 1.5em;
+                position: relative;
+                svg {
+                    position: absolute;
+                    top: 4px;
+                    left: 0;
+                }
+            }
+        }
+        .social {
+            ul {
+                display: flex;
+            }
+            li {
+                font-size: 2.5rem;
+                position: relative;
+                margin-right: 24px;
+                svg {
+                    transition: color 0.5s;
+                }
+                a {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    bottom: 0;
+                    right: 0;
+                    font-size: 0;
+                    z-index: 2;
+                    &:hover + svg {
+                        color: map-get($color, main);
+                    }
+                }
+            }
+        }
     }
     .form {
         flex-basis: 50%;
+        @include media(990) {
+            flex-basis: 100%;
+        }
     }
 }
 </style>
