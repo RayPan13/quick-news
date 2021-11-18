@@ -9,10 +9,10 @@
             "isTall": false,
             "img": "big",
             "src": {
-                "big": "https://picsum.photos/1050/330.webp?random=201",
-                "basic": "https://picsum.photos/500/333.webp?random=201",
-                "video": "https://picsum.photos/430/430.webp?random=201",
-                "tall": "https://picsum.photos/368/640.webp?random=201"
+                "big": "https://picsum.photos/1050/330.jpg?random=201",
+                "basic": "https://picsum.photos/500/333.jpg?random=201",
+                "video": "https://picsum.photos/430/430.jpg?random=201",
+                "tall": "https://picsum.photos/368/640.jpg?random=201"
             },
             "url": "javascript:;",
             "title": "25 Top Tourist Attractions in the United Kingdom, in summer 2019 Year",
@@ -27,10 +27,10 @@
             "isTall": false,
             "img": "basic",
             "src": {
-                "big": "https://picsum.photos/1050/330.webp?random=202",
-                "basic": "https://picsum.photos/500/333.webp?random=202",
-                "video": "https://picsum.photos/430/430.webp?random=202",
-                "tall": "https://picsum.photos/368/640.webp?random=202"
+                "big": "https://picsum.photos/1050/330.jpg?random=202",
+                "basic": "https://picsum.photos/500/333.jpg?random=202",
+                "video": "https://picsum.photos/430/430.jpg?random=202",
+                "tall": "https://picsum.photos/368/640.jpg?random=202"
             },
             "url": "javascript:;",
             "title": "10 Interior Tips In How to Choose a Perfect Frame",
@@ -45,10 +45,10 @@
             "isTall": false,
             "img": "video",
             "src": {
-                "big": "https://picsum.photos/1050/330.webp?random=203",
-                "basic": "https://picsum.photos/500/333.webp?random=203",
-                "video": "https://picsum.photos/430/430.webp?random=203",
-                "tall": "https://picsum.photos/368/640.webp?random=203"
+                "big": "https://picsum.photos/1050/330.jpg?random=203",
+                "basic": "https://picsum.photos/500/333.jpg?random=203",
+                "video": "https://picsum.photos/430/430.jpg?random=203",
+                "tall": "https://picsum.photos/368/640.jpg?random=203"
             },
             "url": "javascript:;",
             "title": "This is video title",
@@ -63,10 +63,10 @@
             "isTall": true,
             "img": "tall",
             "src": {
-                "big": "https://picsum.photos/1050/330.webp?random=204",
-                "basic": "https://picsum.photos/500/333.webp?random=204",
-                "video": "https://picsum.photos/430/430.webp?random=204",
-                "tall": "https://picsum.photos/368/640.webp?random=204"
+                "big": "https://picsum.photos/1050/330.jpg?random=204",
+                "basic": "https://picsum.photos/500/333.jpg?random=204",
+                "video": "https://picsum.photos/430/430.jpg?random=204",
+                "tall": "https://picsum.photos/368/640.jpg?random=204"
             },
             "url": "javascript:;",
             "title": "Manchester United hopeful David de Gea will sign new contract",

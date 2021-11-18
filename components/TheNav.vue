@@ -2,7 +2,8 @@
     <nav :class="{ open }">
         <ul>
             <li v-for="item of menu" :key="item.id">
-                <nuxt-link :to="item.url">{{ item.name }}</nuxt-link>
+                <a v-if="item.url === 'javascript:;'" :href="item.url">{{ item.name }}</a>
+                <nuxt-link v-else :to="item.url">{{ item.name }}</nuxt-link>
                 <ul>
                     <li v-for="subItem of item.sub" :key="subItem.id">
                         <a :href="subItem.url">{{ subItem.name }}</a>
@@ -36,42 +37,42 @@ export default {
                 {
                     id: 3,
                     name: 'POST(CATEGORY)',
-                    url: '/',
+                    url: '/post-category',
                     sub: false,
                 },
                 {
                     id: 4,
                     name: 'SINGLE(POST)',
-                    url: '/',
+                    url: 'javascript:;',
                     sub: false,
                 },
                 {
                     id: 5,
                     name: 'CONTACT',
-                    url: '/',
+                    url: '/contact',
                     sub: false,
                 },
                 {
                     id: 6,
                     name: '404(ERROR)',
-                    url: '/',
+                    url: 'javascript:;',
                     sub: false,
                 },
                 {
                     id: 7,
                     name: 'SUBMENUS',
-                    url: '/',
+                    url: 'javascript:;',
                     sub: [
                         {
                             id: 71,
                             name: 'Submenu 1',
-                            url: '/',
+                            url: 'javascript:;',
                             sub: false,
                         },
                         {
                             id: 72,
                             name: 'Submenu 2',
-                            url: '/',
+                            url: 'javascript:;',
                             sub: false,
                         },
                     ],
@@ -146,7 +147,7 @@ nav {
                 width: auto;
                 z-index: 0;
             }
-            li:hover {
+            li:hover a {
                 &::after {
                     display: none;
                 }

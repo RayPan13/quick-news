@@ -144,16 +144,28 @@ export default {
         }
         .item {
             flex-basis: 50%;
+            img.isLoading {
+                height: 250px;
+                background-color: #ddd;
+            }
             @include media(768) {
                 flex-basis: 100%;
             }
             &.big {
                 flex-basis: 100%;
+                img.isLoading {
+                    height: 230px;
+                    background-color: #ddd;
+                }
             }
             &.video {
                 padding-left: 32px;
                 @include media(768) {
                     padding-left: 0;
+                }
+                img.isLoading {
+                    height: 330px;
+                    background-color: #ddd;
                 }
             }
         }
@@ -189,6 +201,10 @@ export default {
                 transform-origin: center;
                 transition-duration: 1s;
                 width: 100%;
+                &.isLoading {
+                    height: 570px;
+                    background-color: #ddd;
+                }
             }
             .tag {
                 background-color: rgba(map-get($color, main), 0.7);

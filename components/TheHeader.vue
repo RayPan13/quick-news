@@ -2,7 +2,7 @@
     <header :class="{ black: scrollTop > position }">
         <div class="container">
             <div class="logo">
-                <a href="javascript:;">home</a>
+                <nuxt-link to="/">home</nuxt-link>
                 <span>Quick</span>News<span>.</span>
             </div>
             <TheNav />
@@ -23,7 +23,7 @@ export default {
     props: {
         scrollTop: {
             type: Number,
-            default: 0,
+            required: true,
         },
     },
     data() {

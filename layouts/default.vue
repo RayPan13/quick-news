@@ -26,6 +26,7 @@ export default {
     },
     mounted() {
         window.addEventListener('scroll', this.scrollhandler)
+        this.scrollhandler()
     },
     destroyed() {
         window.removeEventListener('scroll', this.scrollhandler)

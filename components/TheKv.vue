@@ -80,7 +80,7 @@ export default {
                     author: 'John Adams',
                     comments: 10,
                     date: '11/04',
-                    bg: 'https://picsum.photos/1920/1080.webp?random=101',
+                    bg: 'https://picsum.photos/1920/1080.jpg?random=101',
                 },
                 {
                     id: 2,
@@ -89,7 +89,7 @@ export default {
                     author: 'John Adams',
                     comments: 2,
                     date: '10/31',
-                    bg: 'https://picsum.photos/1920/1080.webp?random=102',
+                    bg: 'https://picsum.photos/1920/1080.jpg?random=102',
                 },
             ],
             showIndex: 0,

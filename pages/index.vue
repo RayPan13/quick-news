@@ -30,6 +30,13 @@ export default {
             travel: {},
         }
     },
+    head: {
+        title: 'Home - Quick News',
+        meta: [
+            { hid: 'title', name: 'title', content: 'Home - Quick News' },
+            { hid: 'description', name: 'description', content: 'This is Home - Quick News' },
+        ],
+    },
     mounted() {
         this.fetchPost()
         this.$store.dispatch('updateNav', false)
