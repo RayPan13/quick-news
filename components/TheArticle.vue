@@ -9,25 +9,16 @@
             </section>
             <!--eslint-enable-->
         </div>
-        <div class="aside">
-            <div class="hot">
-                <p>HOT</p>
-                <the-aside-carousel :carousel="article.hot" box="hot" />
-            </div>
-            <div class="related">
-                <p>RELATED NEWS</p>
-                <the-aside-carousel :carousel="article.related" box="related" />
-            </div>
-        </div>
+        <the-article-aside :article="article" />
     </article>
 </template>
 <script>
-import TheAsideCarousel from '@/components/TheAsideCarousel.vue'
 import TheArticleTitle from '@/components/TheArticleTitle.vue'
+import TheArticleAside from '@/components/TheArticleAside.vue'
 
 export default {
     name: 'TheArticle',
-    components: { TheAsideCarousel, TheArticleTitle },
+    components: { TheArticleTitle, TheArticleAside },
     props: {
         article: {
             type: Object,
@@ -102,28 +93,6 @@ article {
                 font-weight: 600;
                 text-decoration: underline;
             }
-        }
-    }
-    .aside {
-        flex-basis: 210px;
-        @include media(768) {
-            flex-basis: 100%;
-        }
-        .hot,
-        .related {
-            padding: 32px 0;
-            overflow: hidden;
-        }
-        .hot {
-            color: #fff;
-            background-color: map-get($color, main);
-        }
-        .related {
-            background-color: #fff;
-        }
-        p {
-            margin: 0 0 12px;
-            padding-left: 12px;
         }
     }
 }
