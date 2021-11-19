@@ -11,7 +11,7 @@
                 </ul>
             </li>
             <li>
-                <a href="javascript:;"><fa :icon="['fas', 'search']" /></a>
+                <nuxt-link to="/search"><fa :icon="['fas', 'search']" /></nuxt-link>
             </li>
         </ul>
     </nav>

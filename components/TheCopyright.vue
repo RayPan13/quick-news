@@ -31,7 +31,7 @@ export default {
                 },
                 {
                     name: 'SEARCH RESULT',
-                    url: 'javascript:;',
+                    url: '/search',
                 },
                 {
                     name: '404(ERROR)',
