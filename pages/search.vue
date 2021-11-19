@@ -4,6 +4,8 @@
             <the-intro :intro="intro" />
             <div class="container">
                 <the-article-title :article="article" />
+                <div class="box"></div>
+                <the-article-aside :article="article" />
             </div>
         </main>
     </div>
@@ -11,8 +13,9 @@
 <script>
 import TheIntro from '@/components/TheIntro.vue'
 import TheArticleTitle from '@/components/TheArticleTitle.vue'
+import TheArticleAside from '@/components/TheArticleAside.vue'
 export default {
-    components: { TheIntro, TheArticleTitle },
+    components: { TheIntro, TheArticleTitle, TheArticleAside },
     data() {
         return {
             intro: {
@@ -59,13 +62,41 @@ export default {
             },
         }
     },
+    head: {
+        title: 'Search - Quick News',
+        meta: [
+            { hid: 'title', name: 'title', content: 'Search - Quick News' },
+            { hid: 'description', name: 'description', content: 'This is Search - Quick News' },
+        ],
+    },
+    mounted() {
+        this.$store.dispatch('updateNav', false)
+    },
 }
 </script>
 <style lang="scss" scoped>
 @import '@/assets/scss/variable';
-.search {
+#search {
+    background-color: #eee;
     .container {
         position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 120px;
+        padding-bottom: 48px;
+    }
+    .box {
+        flex-basis: calc(100% - 210px);
+        padding-right: 5%;
+        padding-left: 10%;
+        height: 500px;
+        @include media(1200) {
+            padding-left: 0;
+        }
+        @include media(768) {
+            flex-basis: 100%;
+            padding-right: 0;
+        }
     }
 }
 </style>
