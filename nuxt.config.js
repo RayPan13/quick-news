@@ -76,9 +76,9 @@ export default {
         'nuxt-lazy-load',
     ],
     routerBase: {
-        axios: { baseURL: base },
         router: { base: base },
     },
+    axios: { baseURL: base },
     // Build Configuration: https://go.nuxtjs.dev/config-build
     build: {},
     generate: {
