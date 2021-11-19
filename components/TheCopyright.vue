@@ -4,7 +4,8 @@
             <span>2020 © All Rights Reserved</span>
             <ul>
                 <li v-for="obj of menu" :key="obj.name">
-                    <a :href="obj.url">{{ obj.name }}</a>
+                    <a v-if="obj.url === 'javascript:;'" :href="obj.url">{{ obj.name }}</a>
+                    <nuxt-link v-else :to="obj.url">{{ obj.name }}</nuxt-link>
                 </li>
             </ul>
         </div>
@@ -18,11 +19,11 @@ export default {
             menu: [
                 {
                     name: 'FRONT PAGE',
-                    url: 'javascript:;',
+                    url: '/',
                 },
                 {
                     name: 'PAGE',
-                    url: 'javascript:;',
+                    url: '/page',
                 },
                 {
                     name: 'SINGLE(POST)',
