@@ -1,7 +1,5 @@
-const routerBase =
-    process.env.DEPLOY_ENV === 'GH_PAGES'
-        ? { axios: { baseURL: '/quick-news/' }, router: { base: '/quick-news/' } }
-        : {}
+const base = process.env.DEPLOY_ENV === 'GH_PAGES' ? '/quick-news/' : '/'
+
 export default {
     // Target: https://go.nuxtjs.dev/config-target
     target: 'static',
@@ -28,7 +26,7 @@ export default {
             { hid: 'keywords', name: 'keywords', content: 'html,css,js,vue,nuxt' },
             { hid: 'author', name: 'author', content: 'RayPan' },
         ],
-        link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+        link: [{ rel: 'icon', type: 'image/x-icon', href: base + 'favicon.ico' }],
     },
 
     // Global CSS: https://go.nuxtjs.dev/config-css
@@ -77,7 +75,10 @@ export default {
         '@nuxtjs/axios',
         'nuxt-lazy-load',
     ],
-    ...routerBase,
+    routerBase: {
+        axios: { baseURL: base },
+        router: { base: base },
+    },
     // Build Configuration: https://go.nuxtjs.dev/config-build
     build: {},
     generate: {
