@@ -2,10 +2,50 @@
     <div id="search">
         <main>
             <the-intro :intro="intro" />
+            <div class="filter">
+                <form method="post">
+                    <ul>
+                        <li>
+                            <input type="text" name="keyword" placeholder="Keyword" />
+                        </li>
+                        <li>
+                            <input type="text" name="author" placeholder="Author" />
+                        </li>
+                        <li>
+                            <select name="category">
+                                <option value="category" selected disabled>Category</option>
+                                <option value="sport">Sport</option>
+                                <option value="travel">Travel</option>
+                                <option value="lifestyle">Lifestyle</option>
+                            </select>
+                        </li>
+                        <li>
+                            <select name="tag">
+                                <option value="tag" selected disabled>Tag</option>
+                                <option value="football">Football</option>
+                                <option value="health">Health</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label>From</label>
+                            <input type="date" name="from" />
+                        </li>
+                        <li>
+                            <label>To</label>
+                            <input type="date" name="to" />
+                        </li>
+                        <li>
+                            <button type="button">SEARCH</button>
+                        </li>
+                    </ul>
+                </form>
+            </div>
             <div class="container">
-                <the-article-title :article="article" />
-                <div class="box"></div>
-                <the-article-aside :article="article" />
+                <div class="content">
+                    <the-article-title :article="article" />
+                    <div class="box"></div>
+                    <the-article-aside :article="article" />
+                </div>
             </div>
         </main>
     </div>
@@ -78,11 +118,111 @@ export default {
 @import '@/assets/scss/variable';
 #search {
     background-color: #eee;
-    .container {
+    .filter {
+        width: 60%;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 24px;
+        transform: translateY(-50%);
+        @include media(990) {
+            width: 75%;
+        }
+        @include media(768) {
+            transform: translateY(-25%);
+        }
+        @include media(580) {
+            width: 100%;
+        }
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        li {
+            padding: 0 8px 16px;
+            display: flex;
+            flex-basis: 33.33%;
+            align-items: center;
+            @include media(768) {
+                flex-basis: 50%;
+            }
+            @include media(480) {
+                padding-top: 1px;
+            }
+            &:nth-child(5),
+            &:nth-child(6) {
+                flex: 22%;
+                @include media(768) {
+                    flex-basis: 50%;
+                }
+                @include media(480) {
+                    flex-basis: 100%;
+                }
+            }
+            &:nth-child(7) {
+                flex: 10%;
+                @include media(768) {
+                    flex-basis: 50%;
+                }
+                @include media(480) {
+                    flex-basis: 100%;
+                }
+            }
+            &:last-child {
+                padding-right: 0;
+            }
+        }
+        input,
+        select,
+        button {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            font-size: 1.6rem;
+            padding: 16px 12px;
+        }
+        [type='date'] {
+            height: 100%;
+        }
+        [type='date']::-webkit-datetime-edit,
+        [type='date']::-webkit-inner-spin-button,
+        [type='date']::-webkit-clear-button {
+            display: none;
+        }
+        [type='date']::-webkit-calendar-picker-indicator {
+            position: absolute;
+            top: 50%;
+            right: 0px;
+            transform: translateY(-50%);
+        }
+        [type='date']::before {
+            content: '2021-11-11';
+            display: inline-block;
+            width: 100%;
+            padding-right: 12px;
+            white-space: nowrap;
+        }
+        label {
+            font-size: 1.4rem;
+            padding-right: 12px;
+        }
+        button {
+            font-weight: 600;
+            border: 0;
+            border-radius: 4px;
+            color: #fff;
+            background-color: map-get($color, main);
+            height: 100%;
+            cursor: pointer;
+        }
+    }
+    .content {
         position: relative;
         display: flex;
         flex-wrap: wrap;
-        margin-top: 120px;
         padding-bottom: 48px;
     }
     .box {
