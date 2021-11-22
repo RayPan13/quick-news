@@ -301,6 +301,10 @@ export default {
                 flex-basis: 80px;
                 img {
                     width: 100%;
+                    &.isLoading {
+                        height: 80px;
+                        background-color: #ddd;
+                    }
                 }
             }
             .txt {
