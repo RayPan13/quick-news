@@ -55,7 +55,20 @@
             <div class="container">
                 <div class="content">
                     <the-article-title :article="article" />
-                    <div class="box"></div>
+                    <div class="box">
+                        <div v-for="obj of result" :key="obj.id" class="item">
+                            <div class="pic">
+                                <img :src="obj.img" alt="" />
+                            </div>
+                            <div class="txt">
+                                <h2>{{ obj.title }} <a :href="obj.link"> More >></a></h2>
+                                <div class="note">
+                                    <div class="tag">{{ obj.tag }}</div>
+                                    <div class="date"><fa :icon="['far', 'calendar']" />{{ obj.date }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <the-article-aside :article="article" />
                 </div>
             </div>
@@ -112,8 +125,9 @@ export default {
                     },
                 ],
             },
-            fromDate: '',
-            toDate: '',
+            fromDate: 'YYYY-MM-DD',
+            toDate: 'YYYY-MM-DD',
+            result: [],
         }
     },
     head: {
@@ -125,6 +139,7 @@ export default {
     },
     mounted() {
         this.$store.dispatch('updateNav', false)
+        this.fetchPost()
     },
     methods: {
         fromDateChange() {
@@ -146,6 +161,11 @@ export default {
                     this.fromDate = this.toDate
                 }
             }
+        },
+        async fetchPost() {
+            this.result = await this.$axios.$get('/api/search.json').catch(() => {
+                return []
+            })
         },
     },
 }
@@ -265,13 +285,68 @@ export default {
         flex-basis: calc(100% - 210px);
         padding-right: 5%;
         padding-left: 10%;
-        height: 500px;
         @include media(1200) {
             padding-left: 0;
         }
         @include media(768) {
             flex-basis: 100%;
             padding-right: 0;
+        }
+        .item {
+            display: flex;
+            padding-bottom: 24px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid #aaa;
+            .pic {
+                flex-basis: 80px;
+                img {
+                    width: 100%;
+                }
+            }
+            .txt {
+                flex-basis: calc(100% - 104px);
+                padding-left: 24px;
+                h2 {
+                    font-size: 1.6rem;
+                    margin: 0 0 12px;
+                    line-height: 1.5;
+                    a {
+                        color: map-get($color, main);
+                        transition: color 0.5s;
+                        &:hover {
+                            color: #888;
+                        }
+                    }
+                }
+            }
+            .note {
+                display: flex;
+                align-items: center;
+                @include media(375) {
+                    flex-wrap: wrap;
+                }
+                .tag {
+                    padding: 8px 12px;
+                    background-color: map-get($color, main);
+                    border-radius: 4px;
+                    color: #fff;
+                    font-size: 1.4rem;
+                    font-weight: 600;
+                    margin-right: 12px;
+                    @include media(375) {
+                        margin-bottom: 12px;
+                    }
+                }
+                .date {
+                    font-size: 1.4rem;
+                    @include media(375) {
+                        flex-basis: 100%;
+                    }
+                    svg {
+                        margin-right: 12px;
+                    }
+                }
+            }
         }
     }
 }
