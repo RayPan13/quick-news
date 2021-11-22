@@ -56,7 +56,7 @@
                 <div class="content">
                     <the-article-title :article="article" />
                     <div class="box">
-                        <div v-for="obj of result" :key="obj.id" class="item">
+                        <div v-for="obj of showAry" :key="obj.id" class="item">
                             <div class="pic">
                                 <img :src="obj.img" alt="" />
                             </div>
@@ -71,6 +71,7 @@
                     </div>
                     <the-article-aside :article="article" />
                 </div>
+                <the-page-control :page-length="pageLength" :show.sync="show" />
             </div>
         </main>
     </div>
@@ -128,6 +129,8 @@ export default {
             fromDate: 'YYYY-MM-DD',
             toDate: 'YYYY-MM-DD',
             result: [],
+            show: 1,
+            pageCount: 3,
         }
     },
     head: {
@@ -136,6 +139,22 @@ export default {
             { hid: 'title', name: 'title', content: 'Search - Quick News' },
             { hid: 'description', name: 'description', content: 'This is Search - Quick News' },
         ],
+    },
+    computed: {
+        pageLength() {
+            let len = 0
+            this.result ? (len = this.result.length) : (len = 0)
+            return Math.ceil(len / this.pageCount)
+        },
+        showAry() {
+            if (this.result) {
+                const begin = this.pageCount * (this.show - 1)
+                const end = this.pageCount * this.show
+                return this.result.slice(begin, end)
+            } else {
+                return []
+            }
+        },
     },
     mounted() {
         this.$store.dispatch('updateNav', false)
