@@ -28,11 +28,23 @@
                         </li>
                         <li>
                             <label>From</label>
-                            <input type="date" name="from" />
+                            <input
+                                v-model="fromDate"
+                                type="date"
+                                name="from"
+                                :data-before="fromDate"
+                                @change="fromDateChange"
+                            />
                         </li>
                         <li>
                             <label>To</label>
-                            <input type="date" name="to" />
+                            <input
+                                v-model="toDate"
+                                type="date"
+                                name="to"
+                                :data-before="toDate"
+                                @change="toDateChange"
+                            />
                         </li>
                         <li>
                             <button type="button">SEARCH</button>
@@ -100,6 +112,8 @@ export default {
                     },
                 ],
             },
+            fromDate: '',
+            toDate: '',
         }
     },
     head: {
@@ -111,6 +125,28 @@ export default {
     },
     mounted() {
         this.$store.dispatch('updateNav', false)
+    },
+    methods: {
+        fromDateChange() {
+            if (this.toDate !== '') {
+                const from = new Date(this.fromDate)
+                const to = new Date(this.toDate)
+                if (from > to) {
+                    this.toDate = this.fromDate
+                }
+            }
+        },
+        toDateChange() {
+            if (this.fromDate === '') {
+                this.fromDate = this.toDate
+            } else {
+                const from = new Date(this.fromDate)
+                const to = new Date(this.toDate)
+                if (to < from) {
+                    this.fromDate = this.toDate
+                }
+            }
+        },
     },
 }
 </script>
@@ -199,7 +235,7 @@ export default {
             transform: translateY(-50%);
         }
         [type='date']::before {
-            content: '2021-11-11';
+            content: attr(data-before);
             display: inline-block;
             width: 100%;
             padding-right: 12px;
