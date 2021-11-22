@@ -147,6 +147,9 @@ export default {
             img.isLoading {
                 height: 250px;
                 background-color: #ddd;
+                @include media(990) {
+                    height: 150px;
+                }
             }
             @include media(768) {
                 flex-basis: 100%;
@@ -156,6 +159,9 @@ export default {
                 img.isLoading {
                     height: 230px;
                     background-color: #ddd;
+                    @include media(990) {
+                        height: 140px;
+                    }
                 }
             }
             &.video {
@@ -166,12 +172,22 @@ export default {
                 img.isLoading {
                     height: 330px;
                     background-color: #ddd;
+                    @include media(990) {
+                        height: 190px;
+                    }
                 }
             }
         }
     }
     .right {
         flex-basis: 30%;
+        img.isLoading {
+            height: 570px;
+            background-color: #ddd;
+            @include media(990) {
+                height: 350px;
+            }
+        }
         @include media(768) {
             flex-basis: 100%;
         }
@@ -201,10 +217,6 @@ export default {
                 transform-origin: center;
                 transition-duration: 1s;
                 width: 100%;
-                &.isLoading {
-                    height: 570px;
-                    background-color: #ddd;
-                }
             }
             .tag {
                 background-color: rgba(map-get($color, main), 0.7);
