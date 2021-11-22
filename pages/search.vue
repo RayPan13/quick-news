@@ -130,7 +130,7 @@ export default {
             toDate: 'YYYY-MM-DD',
             result: [],
             show: 1,
-            pageCount: 3,
+            pageCount: 5,
         }
     },
     head: {
