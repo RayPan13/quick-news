@@ -33,6 +33,7 @@
                                 type="date"
                                 name="from"
                                 :data-before="fromDate"
+                                :class="{ 'is-ios': isIos }"
                                 @change="fromDateChange"
                             />
                         </li>
@@ -43,6 +44,7 @@
                                 type="date"
                                 name="to"
                                 :data-before="toDate"
+                                :class="{ 'is-ios': isIos }"
                                 @change="toDateChange"
                             />
                         </li>
@@ -80,6 +82,7 @@
 import TheIntro from '@/components/TheIntro.vue'
 import TheArticleTitle from '@/components/TheArticleTitle.vue'
 import TheArticleAside from '@/components/TheArticleAside.vue'
+
 export default {
     components: { TheIntro, TheArticleTitle, TheArticleAside },
     data() {
@@ -131,6 +134,7 @@ export default {
             result: [],
             show: 1,
             pageCount: 5,
+            isIos: false,
         }
     },
     head: {
@@ -159,6 +163,7 @@ export default {
     mounted() {
         this.$store.dispatch('updateNav', false)
         this.fetchPost()
+        this.isIos = navigator.userAgent.match(/iPhone|iPad/i) !== null
     },
     methods: {
         fromDateChange() {
@@ -286,9 +291,9 @@ export default {
             width: 100%;
             padding-right: 12px;
             white-space: nowrap;
-            @include media(480) {
-                display: none;
-            }
+        }
+        [type='date'].is-ios::before {
+            display: none;
         }
         label {
             font-size: 1.4rem;
