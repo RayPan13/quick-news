@@ -286,6 +286,9 @@ export default {
             width: 100%;
             padding-right: 12px;
             white-space: nowrap;
+            @include media(480) {
+                display: none;
+            }
         }
         label {
             font-size: 1.4rem;
