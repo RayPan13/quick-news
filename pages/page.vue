@@ -10,7 +10,7 @@
 </template>
 <script>
 import TheIntro from '@/components/TheIntro.vue'
-import TheArticle from '~/components/TheArticle.vue'
+import TheArticle from '@/components/TheArticle.vue'
 export default {
     components: { TheIntro, TheArticle },
     data() {
