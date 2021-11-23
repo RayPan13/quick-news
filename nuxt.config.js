@@ -1,5 +1,6 @@
 const base = process.env.DEPLOY_ENV === 'GH_PAGES' ? '/quick-news/' : '/'
-const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? { router: { base: base }, axios: { baseUrl: base } } : {}
+// const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? { router: { base: base }, axios: { baseUrl: base } } : {}
+const routerBase = { router: { base: base } }
 
 export default {
     // Target: https://go.nuxtjs.dev/config-target
@@ -76,10 +77,14 @@ export default {
         '@nuxtjs/axios',
         'nuxt-lazy-load',
     ],
-    ...routerBase,
+    router: { base: base },
+    publicRuntimeConfig: {
+        axios: { baseURL: base },
+    },
     // Build Configuration: https://go.nuxtjs.dev/config-build
     build: {},
     generate: {
         subFolders: false,
+        fallback: true,
     },
 }
