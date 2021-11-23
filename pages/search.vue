@@ -253,11 +253,18 @@ export default {
         input,
         select,
         button {
+            border: none;
+            appearance: none;
             position: relative;
+            outline: none;
             width: 100%;
             height: 100%;
             font-size: 1.6rem;
             padding: 16px 12px;
+            border: 1px solid #ccc;
+        }
+        select {
+            line-height: 1.5;
         }
         [type='date'] {
             height: 100%;
